@@ -1,0 +1,19 @@
+baseURL = 'https://example.org/'
+languageCode = 'ja'
+title = 'Data Visualization Japan'
+theme = 'stack'
+
+[params]
+  mainSections = ['posts']
+
+  [params.colorScheme]
+    toggle = true
+    default = 'dark'
+
+  [params.sidebar]
+    subtitle = 'データビジュアライゼーションのコミュニティ'
+
+    [params.sidebar.avatar]
+      enabled = true
+      local = true
+      src = 'img/logo.png'
