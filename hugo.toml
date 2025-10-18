@@ -17,3 +17,17 @@ theme = 'stack'
       enabled = true
       local = true
       src = 'img/logo.png'
+
+  [params.widgets]
+
+  [[params.widgets.homepage]]
+    type = 'categories'
+
+    [params.widgets.homepage.params]
+      limit = 10
+
+  [[params.widgets.page]]
+    type = 'categories'
+
+    [params.widgets.page.params]
+      limit = 10
