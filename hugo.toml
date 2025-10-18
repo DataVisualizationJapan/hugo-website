@@ -44,5 +44,52 @@ theme = 'stack'
     [params.widgets.page.params]
       limit = 15
 
+[menu]
+
+  [[menu.main]]
+    identifier = 'home'
+    name = 'トップ'
+    url = '/'
+    weight = 10
+
+    [menu.main.params]
+      icon = 'home'
+
+  [[menu.main]]
+    identifier = 'search'
+    name = '検索'
+    url = '/search/'
+    weight = 20
+
+    [menu.main.params]
+      icon = 'search'
+
+  [[menu.main]]
+    identifier = 'posts'
+    name = '記事一覧'
+    url = '/posts/'
+    weight = 30
+
+    [menu.main.params]
+      icon = 'messages'
+
+  [[menu.main]]
+    identifier = 'categories'
+    name = 'カテゴリー'
+    url = '/categories/'
+    weight = 40
+
+    [menu.main.params]
+      icon = 'categories'
+
+  [[menu.main]]
+    identifier = 'tags'
+    name = 'タグ'
+    url = '/tags/'
+    weight = 50
+
+    [menu.main.params]
+      icon = 'tag'
+
 [permalinks]
   posts = '/:slug/'
