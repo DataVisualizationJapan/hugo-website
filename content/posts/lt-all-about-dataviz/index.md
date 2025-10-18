@@ -7,7 +7,7 @@ categories = [
     "2024-meetup"
 ]
 tags = [
-    "",
+    "2024","meetup","矢崎裕一"
 ]
 image = "images/cover.png"
 +++
