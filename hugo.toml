@@ -26,11 +26,23 @@ theme = 'stack'
     [params.widgets.homepage.params]
       limit = 10
 
+  [[params.widgets.homepage]]
+    type = 'tag-cloud'
+
+    [params.widgets.homepage.params]
+      limit = 15
+
   [[params.widgets.page]]
     type = 'categories'
 
     [params.widgets.page.params]
       limit = 10
+
+  [[params.widgets.page]]
+    type = 'tag-cloud'
+
+    [params.widgets.page.params]
+      limit = 15
 
 [permalinks]
   posts = '/:slug/'
