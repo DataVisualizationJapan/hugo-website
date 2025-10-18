@@ -31,3 +31,6 @@ theme = 'stack'
 
     [params.widgets.page.params]
       limit = 10
+
+[permalinks]
+  posts = '/:slug/'
