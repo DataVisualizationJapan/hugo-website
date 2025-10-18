@@ -1,5 +1,5 @@
 baseURL = 'https://data-visualization.jp/'
-languageCode = 'ja'
+languageCode = 'ja-jp'
 title = 'Data Visualization Japan'
 theme = 'stack'
 
