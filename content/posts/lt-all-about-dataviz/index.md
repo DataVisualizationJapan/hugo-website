@@ -1,6 +1,6 @@
 +++
 author = "Yuichi Yazaki"
-title = "矢崎 裕一／データ可視化の基本が全部わかる本"
+title = "LT：矢崎 裕一／データ可視化の基本が全部わかる本"
 slug = "lt-all-about-dataviz"
 date = "2025-10-18"
 categories = [
