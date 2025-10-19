@@ -1,0 +1,54 @@
+/* Home page custom layout tweaks */
+.home-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.home-section .section-card {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.section-card--plain {
+  background: none;
+  box-shadow: none;
+  padding-left: 0;
+}
+
+.home-section .subsection-list {
+  margin-top: 4px;
+}
+
+.home-section .subsection-list .article-list--tile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 0;
+}
+
+.home-section .subsection-list .article-list--tile article {
+  margin-right: 0;
+}
+
+.home-section--recent .article-list--compact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: var(--small-card-padding);
+}
+
+.home-section--recent .article-list--compact article > a {
+  padding: var(--small-card-padding);
+}
+
+.home-section--recent .article-list--compact article:not(:last-of-type) {
+  border-bottom: none;
+}
+
+.home-section--recent .article-list--compact article + article {
+  margin-top: 4px;
+  padding-top: var(--small-card-padding);
+  border-top: 1.5px solid var(--card-separator-color);
+}
