@@ -44,6 +44,12 @@
         </div>
     </header>
 
+    {{ with .Content }}
+        <section class="section-content article-content">
+            {{ . }}
+        </section>
+    {{ end }}
+
     {{/* Render subcategories when current taxonomy term matches a node in category_hierarchy */}}
     {{- $tree := site.Data.category_hierarchy.categories | default (slice) -}}
     {{- $current := .Data.Term | default "" -}}
