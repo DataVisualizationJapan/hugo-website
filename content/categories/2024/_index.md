@@ -3,6 +3,10 @@ title = "2024"
 description = "「2024」の一覧ページ"
 +++
 
-![alt text](cover.png)
+![alt text](peatix.png)
 
-ここにページ固有の本文を記載できます。必要に応じて Markdown で概要や補足を本文として追記してください。
+2024年12月28日に開催したオンライン・イベントです。
+
+- [Peatixページ](https://dvj2024.peatix.com/view)
+
+当日の講演のいくつかを文字起こしした文章コンテンツを提供します。
