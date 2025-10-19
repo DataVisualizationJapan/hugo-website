@@ -1,0 +1,20 @@
+[[categories]]
+slug = "meetup"
+title = "Meetup"
+weight = 10
+description = "Data Visualization Japan Meetup のイベントまとめ"
+
+  [[categories.children]]
+  slug = "2024"
+  title = "2024"
+  weight = 10
+
+  [[categories.children]]
+  slug = "2023"
+  title = "2023"
+  weight = 20
+
+  [[categories.children]]
+  slug = "2022"
+  title = "2022"
+  weight = 30
