@@ -91,5 +91,14 @@ theme = 'stack'
     [menu.main.params]
       icon = 'tag'
 
+  [[menu.main]]
+    identifier = 'about'
+    name = 'About'
+    url = '/about/'
+    weight = 60
+
+    [menu.main.params]
+      icon = 'user'
+
 [permalinks]
   posts = '/:slug/'
