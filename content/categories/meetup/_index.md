@@ -1,4 +1,4 @@
 +++
 title = 'meetup'
-description = '「meetup」の一覧ページ'
+description = 'meetupイベントの一覧ページ'
 +++

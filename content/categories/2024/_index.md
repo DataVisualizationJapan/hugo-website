@@ -3,8 +3,6 @@ title = "2024"
 description = "「2024」の一覧ページ"
 +++
 
-![alt text](peatix.png)
-
 2024年12月28日に開催したオンライン・イベントです。
 
 - [Peatixページ](https://dvj2024.peatix.com/view)

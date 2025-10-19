@@ -2,7 +2,7 @@
 slug = "meetup"
 title = "Meetup"
 weight = 10
-description = "Data Visualization Japan Meetup のイベントまとめ"
+description = "Meetup イベントまとめ"
 
   [[categories.children]]
   slug = "2024"
