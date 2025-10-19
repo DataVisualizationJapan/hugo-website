@@ -4,10 +4,10 @@ title = "矢崎 裕一 / データ可視化の基本が全部わかる本"
 slug = "lt-all-about-dataviz"
 date = "2025-10-18"
 categories = [
-    "2024-meetup"
+    "meetup","2024"
 ]
 tags = [
-    "2024","meetup","矢崎裕一"
+    "矢崎裕一"
 ]
 image = "images/cover.png"
 +++
