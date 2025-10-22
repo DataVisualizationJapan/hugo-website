@@ -9,7 +9,7 @@ categories = [
 tags = [
     "三中信宏"
 ]
-image = "images/cover.png"
+image = "images/p1.png"
 weight = 10
 +++
 
