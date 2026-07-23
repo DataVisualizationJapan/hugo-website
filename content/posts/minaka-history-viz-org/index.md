@@ -3,6 +3,8 @@ author = "Yuichi Yazaki"
 title = """三中 信宏／可視化と体系化の歴史：サイエンスとアートをまたいで"""
 slug = "minaka-history-viz-org-part1"
 date = "2025-10-18"
+event = "2022-meetup"
+videoId = "2jmQypjSVS0"
 categories = [
     "meetup","2022"
 ]

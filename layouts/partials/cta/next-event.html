@@ -1,0 +1,44 @@
+{{- /*
+    次回イベント誘導 CTA。
+    引数: "bar"   … 全ページ共通の画面下部バー
+          "block" … 記事末尾の誘導ブロック
+    events セクションから「最も近い未来のイベント」を自動抽出する。
+    未来のイベントが無ければ何も描画しない（自動で非表示）。
+*/ -}}
+{{- $variant := . -}}
+{{- $now := now -}}
+{{- $next := "" -}}
+{{- range where site.RegularPages "Section" "events" -}}
+    {{- $d := time.AsTime (.Params.eventDate | default .Date) -}}
+    {{- if ge $d $now -}}
+        {{- if not $next -}}
+            {{- $next = . -}}
+        {{- else if lt $d (time.AsTime ($next.Params.eventDate | default $next.Date)) -}}
+            {{- $next = . -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- with $next -}}
+    {{- $date := (time.AsTime (.Params.eventDate | default .Date)).Format "2006.01.02" -}}
+    {{- $url := or .Params.peatix .Params.connpass .RelPermalink -}}
+    {{- $external := ne $url .RelPermalink -}}
+    {{- if eq $variant "bar" -}}
+        <div class="dvj-cta-bar" id="dvj-cta-bar" role="region" aria-label="次回イベントのお知らせ">
+            <div class="dvj-cta-bar__inner">
+                <span class="dvj-cta-bar__label">次回イベント</span>
+                <span class="dvj-cta-bar__title">{{ .Title }}<span class="dvj-cta-bar__date">{{ $date }}</span></span>
+                <a class="dvj-cta-bar__btn" href="{{ $url }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>申し込む →</a>
+                <button type="button" class="dvj-cta-bar__close" aria-label="閉じる" onclick="var b=this.closest('.dvj-cta-bar');if(b){b.remove();}try{sessionStorage.setItem('dvjCtaClosed','1');}catch(e){}">×</button>
+            </div>
+        </div>
+        <script>try{if(sessionStorage.getItem('dvjCtaClosed')){var b=document.getElementById('dvj-cta-bar');if(b){b.remove();}}}catch(e){}</script>
+    {{- else -}}
+        <aside class="dvj-cta-block" aria-label="次回イベントのお知らせ">
+            <p class="dvj-cta-block__label">次回イベント</p>
+            <p class="dvj-cta-block__title">{{ .Title }}</p>
+            <p class="dvj-cta-block__meta">{{ $date }}{{ with .Params.format }}<span> ・ {{ . }}</span>{{ end }}</p>
+            <a class="dvj-cta-block__btn" href="{{ $url }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>参加する →</a>
+            <p class="dvj-cta-block__sub"><a href="https://www.youtube.com/@datavisualizationjapan" target="_blank" rel="noopener">YouTubeチャンネルを登録する</a></p>
+        </aside>
+    {{- end -}}
+{{- end -}}

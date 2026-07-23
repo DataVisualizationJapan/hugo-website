@@ -79,6 +79,152 @@
   margin: 1.5em auto;
 }
 
+/* ============================================================
+   Data Visualization Japan — イベント / CTA
+   （テーマの CSS 変数を使い、ライト/ダーク両対応）
+   ============================================================ */
+
+/* ボタン */
+.dvj-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--accent-color);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: filter .15s ease;
+}
+.dvj-btn:hover { filter: brightness(1.08); }
+.dvj-btn--ghost {
+  background: transparent;
+  color: var(--accent-color);
+  box-shadow: inset 0 0 0 2px var(--accent-color);
+}
+
+/* イベント一覧 */
+.dvj-event-group { margin: 28px 0; }
+.dvj-event-group .section-title { margin-bottom: 12px; }
+.dvj-event-list { display: flex; flex-direction: column; gap: 12px; }
+.dvj-event-card {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
+  text-decoration: none;
+  color: var(--card-text-color-main);
+  transition: transform .15s ease;
+}
+.dvj-event-card:hover { transform: translateY(-2px); }
+.dvj-event-card--upcoming { border-left: 4px solid var(--accent-color); }
+.dvj-event-card__date {
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+.dvj-event-card__title { font-weight: 700; }
+.dvj-event-card__meta {
+  font-size: .85rem;
+  color: var(--card-text-color-tertiary);
+}
+
+/* イベント個別ページ */
+.dvj-event { display: flex; flex-direction: column; gap: 18px; }
+.dvj-event__header {
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
+}
+.dvj-event__date {
+  display: flex; gap: 12px; align-items: center;
+  color: var(--accent-color); font-weight: 700; margin: 0 0 6px;
+}
+.dvj-event__format {
+  font-size: .8rem; color: var(--card-text-color-tertiary);
+  border: 1px solid var(--card-separator-color); border-radius: 999px; padding: 2px 10px;
+}
+.dvj-event__title { margin: 0; font-size: 1.6rem; }
+.dvj-event__links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* セッション */
+.dvj-sessions { display: flex; flex-direction: column; gap: 14px; }
+.dvj-session {
+  display: flex; gap: 16px;
+  padding: 14px; border-radius: 12px;
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
+}
+.dvj-session__thumb { flex: 0 0 200px; max-width: 40%; }
+.dvj-session__thumb img { width: 100%; height: auto; border-radius: 8px; display: block; }
+.dvj-session__title { margin: 0 0 4px; font-size: 1.1rem; }
+.dvj-session__speaker { color: var(--card-text-color-secondary); margin: 0 0 8px; }
+.dvj-session__links { display: flex; flex-wrap: wrap; gap: 16px; margin: 0; }
+.dvj-session__links a { font-weight: 600; }
+
+/* 記事末尾の CTA ブロック */
+.dvj-cta-block {
+  margin-top: 28px;
+  padding: 24px;
+  border-radius: 14px;
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
+  border-top: 4px solid var(--accent-color);
+  text-align: center;
+}
+.dvj-cta-block__label {
+  color: var(--accent-color); font-weight: 700; letter-spacing: .08em;
+  font-size: .8rem; margin: 0 0 6px;
+}
+.dvj-cta-block__title { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; }
+.dvj-cta-block__meta { color: var(--card-text-color-secondary); margin: 0 0 16px; }
+.dvj-cta-block__btn {
+  display: inline-block; padding: 12px 28px; border-radius: 10px;
+  background: var(--accent-color); color: #fff; font-weight: 700; text-decoration: none;
+}
+.dvj-cta-block__sub { margin: 14px 0 0; font-size: .9rem; }
+
+/* 全ページ共通の下部バー */
+.dvj-cta-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  background: var(--card-background);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, .18);
+  border-top: 3px solid var(--accent-color);
+}
+.dvj-cta-bar__inner {
+  max-width: 1000px; margin: 0 auto;
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px;
+}
+.dvj-cta-bar__label {
+  flex: 0 0 auto; font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+  color: #fff; background: var(--accent-color); border-radius: 999px; padding: 3px 10px;
+}
+.dvj-cta-bar__title {
+  flex: 1 1 auto; font-weight: 700; color: var(--card-text-color-main);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.dvj-cta-bar__date { margin-left: 10px; color: var(--card-text-color-tertiary); font-weight: 500; }
+.dvj-cta-bar__btn {
+  flex: 0 0 auto; padding: 8px 18px; border-radius: 8px;
+  background: var(--accent-color); color: #fff; font-weight: 700; text-decoration: none;
+}
+.dvj-cta-bar__close {
+  flex: 0 0 auto; background: none; border: none; cursor: pointer;
+  font-size: 1.2rem; line-height: 1; color: var(--card-text-color-tertiary); padding: 4px 8px;
+}
+
+@media (max-width: 640px) {
+  .dvj-cta-bar__label,
+  .dvj-cta-bar__date { display: none; }
+  .dvj-session { flex-direction: column; }
+  .dvj-session__thumb { flex-basis: auto; max-width: 100%; }
+}
+
 .section-content p > img {
   margin: 1.5em auto;
 }

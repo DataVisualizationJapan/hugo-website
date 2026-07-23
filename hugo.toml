@@ -65,6 +65,15 @@ theme = 'stack'
       icon = 'search'
 
   [[menu.main]]
+    identifier = 'events'
+    name = 'イベント'
+    url = '/events/'
+    weight = 25
+
+    [menu.main.params]
+      icon = 'calendar-event'
+
+  [[menu.main]]
     identifier = 'posts'
     name = '記事一覧'
     url = '/posts/'
@@ -102,3 +111,28 @@ theme = 'stack'
 
 [permalinks]
   posts = '/:slug/'
+
+# 左サイドバーのソーシャルリンク（コミュニティ導線）
+[[menu.social]]
+  identifier = 'youtube'
+  name = 'YouTube'
+  url = 'https://www.youtube.com/@datavisualizationjapan'
+
+  [menu.social.params]
+    icon = 'brand-youtube'
+
+[[menu.social]]
+  identifier = 'facebook'
+  name = 'Facebook グループ'
+  url = 'https://www.facebook.com/groups/datavizjapan'
+
+  [menu.social.params]
+    icon = 'brand-facebook'
+
+[[menu.social]]
+  identifier = 'connpass'
+  name = 'connpass'
+  url = 'https://data-visualization-japan.connpass.com/'
+
+  [menu.social.params]
+    icon = 'calendar-event'
