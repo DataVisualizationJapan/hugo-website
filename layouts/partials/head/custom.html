@@ -1,0 +1,73 @@
+{{- /*
+    構造化データ (JSON-LD) — 検索エンジン向け。
+      ホーム            → Organization（社会リンク付き）
+      記事(videoId有)   → VideoObject
+      イベント個別ページ → Event
+    テーマの head フックから読み込まれる。
+*/ -}}
+
+{{- if .IsHome -}}
+    {{- $sameAs := slice -}}
+    {{- range .Site.Menus.social -}}
+        {{- if and (ne .Identifier "rss") (hasPrefix .URL "http") -}}
+            {{- $sameAs = $sameAs | append .URL -}}
+        {{- end -}}
+    {{- end -}}
+    {{- $org := dict
+        "@context" "https://schema.org"
+        "@type" "Organization"
+        "name" .Site.Title
+        "url" .Site.BaseURL
+        "description" (.Site.Params.sidebar.subtitle | default "")
+    -}}
+    {{- with $sameAs -}}{{- $org = merge $org (dict "sameAs" .) -}}{{- end -}}
+    <script type="application/ld+json">{{ $org | jsonify | safeJS }}</script>
+{{- end -}}
+
+{{- if and .IsPage .Params.videoId -}}
+    {{- $id := .Params.videoId -}}
+    {{- $desc := .Params.summary | default (.Summary | plainify | chomp) -}}
+    {{- $video := dict
+        "@context" "https://schema.org"
+        "@type" "VideoObject"
+        "name" .Title
+        "description" $desc
+        "thumbnailUrl" (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id)
+        "uploadDate" (.Date.Format "2006-01-02")
+        "contentUrl" (printf "https://www.youtube.com/watch?v=%s" $id)
+        "embedUrl" (printf "https://www.youtube.com/embed/%s" $id)
+    -}}
+    <script type="application/ld+json">{{ $video | jsonify | safeJS }}</script>
+{{- end -}}
+
+{{- if and .IsPage (eq .Section "events") -}}
+    {{- $ev := time.AsTime (.Params.eventDate | default .Date) -}}
+    {{- $url := or .Params.peatix .Params.connpass .Permalink -}}
+    {{- $event := dict
+        "@context" "https://schema.org"
+        "@type" "Event"
+        "name" .Title
+        "startDate" ($ev.Format "2006-01-02T15:04:05-07:00")
+        "eventStatus" "https://schema.org/EventScheduled"
+        "url" $url
+        "organizer" (dict "@type" "Organization" "name" .Site.Title "url" .Site.BaseURL)
+    -}}
+    {{- if and .Params.format (in (string .Params.format) "オンライン") -}}
+        {{- $event = merge $event (dict
+            "eventAttendanceMode" "https://schema.org/OnlineEventAttendanceMode"
+            "location" (dict "@type" "VirtualLocation" "url" $url)
+        ) -}}
+    {{- else if .Params.venue -}}
+        {{- $event = merge $event (dict
+            "eventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode"
+            "location" (dict "@type" "Place" "name" .Params.venue)
+        ) -}}
+    {{- end -}}
+    {{- $img := partialCached "helper/image" (dict "Context" . "Type" "opengraph") .RelPermalink "opengraph" -}}
+    {{- if $img.exists -}}{{- $event = merge $event (dict "image" (absURL $img.permalink)) -}}{{- end -}}
+    <script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
+{{- end -}}
+
+{{- /* RSS フィードの自動検出（フィードリーダー用） */ -}}
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
+

@@ -29,4 +29,14 @@
   - 全ページ表示は `layouts/partials/footer/custom.html`（テーマの空フック）から `"bar"` を呼ぶ。
   - 記事末尾は `layouts/partials/article/components/footer.html` の末尾で `"block"` を呼ぶ。
   - スタイルは `assets/scss/custom.scss` の「Data Visualization Japan — イベント / CTA」ブロック（テーマの CSS 変数を使用）。
-- ソーシャル導線は `hugo.toml` の `[[menu.social]]`（YouTube / Facebook / connpass）。アイコンが無いものは `assets/icons/<name>.svg` に Tabler 形式の SVG を追加（`brand-youtube` / `brand-facebook` / `calendar-event` を追加済み）。`layouts/partials/helper/icon.html` は SVG が無いとビルドエラーになる点に注意。
+- ソーシャル導線は `hugo.toml` の `[[menu.social]]`（YouTube / Facebook / connpass / RSS）。アイコンが無いものは `assets/icons/<name>.svg` に Tabler 形式の SVG を追加（`brand-youtube` / `brand-facebook` / `calendar-event` を追加済み）。`layouts/partials/helper/icon.html` は SVG が無いとビルドエラーになる点に注意。
+
+## Phase 2（構造化データ / 登壇者 / RSS）で追加した構成
+
+- 構造化データ（JSON-LD）は `layouts/partials/head/custom.html`（テーマの head フック）で出力。
+  - ホーム → `Organization`（`[[menu.social]]` の外部URLを `sameAs` に集約。RSS・相対URLは除外）。
+  - 記事（`videoId` 有）→ `VideoObject`。イベント個別ページ → `Event`（`format` に「オンライン」を含めば VirtualLocation + OnlineEventAttendanceMode）。
+  - `<script type="application/ld+json">{{ ... | jsonify | safeJS }}</script>` の `safeJS` は必須。付けないと `<script>` 内で二重エンコードされる。
+  - 同ファイル末尾で RSS フィードの autodiscovery `<link rel="alternate">` も出力。
+- 登壇者タクソノミー：`hugo.toml` の `[taxonomies]` に `speaker = "speakers"` を追加（category / tag も併記が必要）。記事 front matter は `speakers = [...]`。`/speakers/` と `/speakers/<名前>/` はテーマ標準のタクソノミーテンプレートで自動生成。メニューに `speakers`（weight 45, icon `user`）。
+  - 方針：`tags` は「トピック」、`speakers` は「登壇者」。人名は tags ではなく speakers に入れる（既存2記事は移行済み）。

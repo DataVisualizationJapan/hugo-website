@@ -8,9 +8,10 @@ videoId = "2jmQypjSVS0"
 categories = [
     "meetup","2022"
 ]
-tags = [
+speakers = [
     "三中信宏"
 ]
+tags = []
 image = "images/p1.png"
 weight = 10
 +++
