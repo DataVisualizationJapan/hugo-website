@@ -3,6 +3,11 @@ languageCode = 'ja-jp'
 title = 'Data Visualization Japan'
 theme = 'stack'
 
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  speaker = 'speakers'
+
 [params]
   mainSections = ['posts']
 
@@ -92,6 +97,15 @@ theme = 'stack'
       icon = 'categories'
 
   [[menu.main]]
+    identifier = 'speakers'
+    name = '登壇者'
+    url = '/speakers/'
+    weight = 45
+
+    [menu.main.params]
+      icon = 'user'
+
+  [[menu.main]]
     identifier = 'tags'
     name = 'タグ'
     url = '/tags/'
@@ -136,3 +150,11 @@ theme = 'stack'
 
   [menu.social.params]
     icon = 'calendar-event'
+
+[[menu.social]]
+  identifier = 'rss'
+  name = 'RSS'
+  url = '/index.xml'
+
+  [menu.social.params]
+    icon = 'rss'

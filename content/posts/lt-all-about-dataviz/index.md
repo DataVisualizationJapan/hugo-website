@@ -8,9 +8,10 @@ videoId = "CTQHwFCKpw0"
 categories = [
     "meetup","2024"
 ]
-tags = [
+speakers = [
     "矢崎裕一"
 ]
+tags = []
 image = "images/cover.png"
 +++
 
