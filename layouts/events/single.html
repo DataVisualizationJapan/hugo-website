@@ -1,0 +1,47 @@
+{{ define "main" }}
+<article class="dvj-event">
+    <header class="dvj-event__header">
+        {{- $d := time.AsTime (.Params.eventDate | default .Date) -}}
+        <p class="dvj-event__date">
+            <time datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
+            {{ with .Params.format }}<span class="dvj-event__format">{{ . }}</span>{{ end }}
+        </p>
+        <h1 class="dvj-event__title">{{ .Title }}</h1>
+    </header>
+
+    {{ with .Content }}<div class="article-content dvj-event__intro">{{ . }}</div>{{ end }}
+
+    {{ if or .Params.peatix .Params.connpass .Params.speakerdeck }}
+        <div class="dvj-event__links">
+            {{ with .Params.peatix }}<a class="dvj-btn" href="{{ . }}" target="_blank" rel="noopener">Peatixで申し込む</a>{{ end }}
+            {{ with .Params.connpass }}<a class="dvj-btn dvj-btn--ghost" href="{{ . }}" target="_blank" rel="noopener">connpass</a>{{ end }}
+            {{ with .Params.speakerdeck }}<a class="dvj-btn dvj-btn--ghost" href="{{ . }}" target="_blank" rel="noopener">Speaker Deck</a>{{ end }}
+        </div>
+    {{ end }}
+
+    {{ with .Params.sessions }}
+        <section class="dvj-sessions">
+            <h2 class="section-title">セッション</h2>
+            {{ range . }}
+                <article class="dvj-session">
+                    {{ with .videoId }}
+                        <a class="dvj-session__thumb" href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener" aria-label="動画を見る">
+                            <img src="https://i.ytimg.com/vi/{{ . }}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+                        </a>
+                    {{ end }}
+                    <div class="dvj-session__body">
+                        <h3 class="dvj-session__title">{{ .title }}</h3>
+                        {{ with .speaker }}<p class="dvj-session__speaker">{{ . }}</p>{{ end }}
+                        <p class="dvj-session__links">
+                            {{ with .post }}<a href="/{{ . }}/">書き起こしを読む →</a>{{ end }}
+                            {{ with .videoId }}<a href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener">動画を見る →</a>{{ end }}
+                        </p>
+                    </div>
+                </article>
+            {{ end }}
+        </section>
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+</article>
+{{ end }}

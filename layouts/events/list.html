@@ -1,0 +1,62 @@
+{{ define "main" }}
+    <header class="dvj-events-header">
+        <div class="section-card">
+            <div class="section-details">
+                <h1 class="section-term">{{ .Title }}</h1>
+                {{ with .Params.description }}<h2 class="section-description">{{ . }}</h2>{{ end }}
+            </div>
+        </div>
+    </header>
+
+    {{ with .Content }}<div class="article-content dvj-events-intro">{{ . }}</div>{{ end }}
+
+    {{- $now := now -}}
+    {{- $up := slice -}}
+    {{- $past := slice -}}
+    {{- range .Pages -}}
+        {{- $d := time.AsTime (.Params.eventDate | default .Date) -}}
+        {{- if ge $d $now -}}
+            {{- $up = $up | append . -}}
+        {{- else -}}
+            {{- $past = $past | append . -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- with sort $up "Params.eventDate" "asc" -}}
+        <section class="dvj-event-group">
+            <h2 class="section-title">開催予定</h2>
+            <div class="dvj-event-list">
+                {{ range . }}
+                    {{ $d := time.AsTime (.Params.eventDate | default .Date) }}
+                    <a class="dvj-event-card dvj-event-card--upcoming" href="{{ .RelPermalink }}">
+                        <time class="dvj-event-card__date" datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
+                        <span class="dvj-event-card__title">{{ .Title }}</span>
+                        {{ with .Params.format }}<span class="dvj-event-card__meta">{{ . }}</span>{{ end }}
+                    </a>
+                {{ end }}
+            </div>
+        </section>
+    {{- end -}}
+
+    {{- with sort $past "Params.eventDate" "desc" -}}
+        <section class="dvj-event-group">
+            <h2 class="section-title">過去のイベント</h2>
+            <div class="dvj-event-list">
+                {{ range . }}
+                    {{ $d := time.AsTime (.Params.eventDate | default .Date) }}
+                    <a class="dvj-event-card" href="{{ .RelPermalink }}">
+                        <time class="dvj-event-card__date" datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
+                        <span class="dvj-event-card__title">{{ .Title }}</span>
+                        {{ with .Params.format }}<span class="dvj-event-card__meta">{{ . }}</span>{{ end }}
+                    </a>
+                {{ end }}
+            </div>
+        </section>
+    {{- end -}}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
