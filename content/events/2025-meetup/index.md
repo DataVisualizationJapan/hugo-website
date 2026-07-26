@@ -1,0 +1,15 @@
++++
+title = "Data Visualization Japan Meetup 2025"
+date = "2025-12-29"
+eventDate = "2025-12-29T00:00:00+09:00"
+format = "オンライン"
+peatix = "https://dvj-2025-book.peatix.com/view"
+
+[[sessions]]
+  title = "データを伝える基本原則 ―『データ思考入門』で目指したこと"
+  speaker = "荻原 和樹"
+  videoId = "kblc5BIfsMU"
+  post = "ogiwara-communicating-data"
++++
+
+2025年12月29日にオンラインで開催した「データ可視化本 著者が語る」の記録です。データ可視化に関する書籍の著者が集い、それぞれの一冊について語りました。当日の講演の一部を、書き起こし記事として公開しています。

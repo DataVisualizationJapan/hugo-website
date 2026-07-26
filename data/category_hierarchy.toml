@@ -5,6 +5,11 @@ weight = 10
 description = "Meetup イベントまとめ"
 
   [[categories.children]]
+  slug = "2025"
+  title = "2025"
+  weight = 5
+
+  [[categories.children]]
   slug = "2024"
   title = "2024"
   weight = 10
