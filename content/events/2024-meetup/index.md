@@ -11,6 +11,12 @@ image = "images/cover.png"
   speaker = "矢崎 裕一"
   videoId = "CTQHwFCKpw0"
   post = "lt-all-about-dataviz"
+
+[[sessions]]
+  title = "円グラフか帯グラフか、それが問題だ"
+  speaker = "隅谷 孝洋"
+  videoId = "m2DOHo6PKqE"
+  post = "lt-pie-vs-bar"
 +++
 
 2024年12月28日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
