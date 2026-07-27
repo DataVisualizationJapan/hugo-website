@@ -17,6 +17,12 @@ image = "images/cover.png"
   speaker = "隅谷 孝洋"
   videoId = "m2DOHo6PKqE"
   post = "lt-pie-vs-bar"
+
+[[sessions]]
+  title = "ネットワーク可視化の世界"
+  speaker = "尾上 洋介"
+  videoId = "1C_LfqJcdMA"
+  post = "network-visualization"
 +++
 
 2024年12月28日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
