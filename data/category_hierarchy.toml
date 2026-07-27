@@ -23,3 +23,8 @@ description = "Meetup イベントまとめ"
   slug = "2022"
   title = "2022"
   weight = 30
+
+  [[categories.children]]
+  slug = "2020"
+  title = "2020"
+  weight = 40
