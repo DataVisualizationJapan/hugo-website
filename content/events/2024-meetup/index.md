@@ -29,6 +29,12 @@ image = "images/cover.png"
   speaker = "天野 由貴"
   videoId = "eyrZIctNsEw"
   post = "lt-joho-design-education"
+
+[[sessions]]
+  title = "すべての文化財情報にアクセスできるようにする計画"
+  speaker = "高田 祐一"
+  videoId = "_zhUw7uhgAs"
+  post = "cultural-heritage-data"
 +++
 
 2024年12月28日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
