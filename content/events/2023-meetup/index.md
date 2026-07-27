@@ -15,6 +15,12 @@ format = "オンライン"
   speaker = "羽田 康祐"
   videoId = "v2NBbgm2bN8"
   post = "lt-mercator"
+
+[[sessions]]
+  title = "データビジュアライゼーションを創造する"
+  speaker = "山辺 真幸"
+  videoId = "huGGeYMAXWg"
+  post = "creating-data-visualization"
 +++
 
 2023年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
