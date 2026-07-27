@@ -27,6 +27,12 @@ format = "オンライン"
   speaker = "棚原 みずき"
   videoId = "iaN5SpbYS1Y"
   post = "learning-data-design-london"
+
+[[sessions]]
+  title = "デザイナーとデータビジュアライゼーション"
+  speaker = "市川 貴恵"
+  videoId = "ToBZy8S9LFc"
+  post = "designer-and-dataviz"
 +++
 
 2023年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
