@@ -21,6 +21,12 @@ format = "オンライン"
   speaker = "山辺 真幸"
   videoId = "huGGeYMAXWg"
   post = "creating-data-visualization"
+
+[[sessions]]
+  title = "ロンドンでデータデザインを学ぶ"
+  speaker = "棚原 みずき"
+  videoId = "iaN5SpbYS1Y"
+  post = "learning-data-design-london"
 +++
 
 2023年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
