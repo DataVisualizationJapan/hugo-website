@@ -23,6 +23,12 @@ image = "images/cover.png"
   speaker = "尾上 洋介"
   videoId = "1C_LfqJcdMA"
   post = "network-visualization"
+
+[[sessions]]
+  title = "高校の情報デザイン〜経緯と課題"
+  speaker = "天野 由貴"
+  videoId = "eyrZIctNsEw"
+  post = "lt-joho-design-education"
 +++
 
 2024年12月28日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
