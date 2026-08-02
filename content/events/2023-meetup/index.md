@@ -39,6 +39,12 @@ format = "オンライン"
   speaker = "工藤 麻里"
   videoId = "5vWfJH1zPnM"
   post = "useless-data-literacy"
+
+[[sessions]]
+  title = "シェーダーを使ったWeb地図のカスタマイズ"
+  speaker = "清水 正行"
+  videoId = "RhnQ8kkK_xk"
+  post = "lt-shader-webmap"
 +++
 
 2023年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。

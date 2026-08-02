@@ -35,6 +35,12 @@ image = "images/cover.png"
   speaker = "高田 祐一"
   videoId = "_zhUw7uhgAs"
   post = "cultural-heritage-data"
+
+[[sessions]]
+  title = "大学の卒業研究としてのデータ可視化"
+  speaker = "伊藤 貴之"
+  videoId = "cONyW8FXfSY"
+  post = "university-dataviz-research"
 +++
 
 2024年12月28日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
