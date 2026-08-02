@@ -9,6 +9,12 @@ format = "オンライン"
   speaker = "細野 雄紀"
   videoId = "dv6E6K1IzQQ"
   post = "covid-misinformation-design"
+
+[[sessions]]
+  title = "「表現伝達」をするのに最適なBIツール"
+  speaker = "前側 将"
+  videoId = "LIVEeRTfHEI"
+  post = "lt-bi-tools"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
