@@ -45,6 +45,12 @@ format = "オンライン"
   speaker = "清水 正行"
   videoId = "RhnQ8kkK_xk"
   post = "lt-shader-webmap"
+
+[[sessions]]
+  title = "LLMに学習指導要領をファインチューニングしてみた"
+  speaker = "藤井 政登"
+  videoId = "0tX5THAXyws"
+  post = "lt-llm-finetuning"
 +++
 
 2023年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
