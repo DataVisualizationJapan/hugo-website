@@ -16,6 +16,12 @@ peatix = "https://dvj2025.peatix.com/view"
   speaker = "久能 弘嗣（日本経済新聞）"
   videoId = "IilIrdiAQls"
   post = "nikkei-aviation-accident-viz"
+
+[[sessions]]
+  title = "共創プラットフォーム PYNT と日建グループのデータ・ビジュアライゼーション"
+  speaker = "土肥 真梨子（日建設計総合研究所）"
+  videoId = "QiNzNAz8Asc"
+  post = "pynt-nikken-dataviz"
 +++
 
 2025年12月2日に PYNT竹橋で開催したイベントです。災害や事故をどう可視化して伝えるかをテーマに、報道・デザイン・建築の立場から議論しました。当日の講演の一部を、書き起こし記事として公開しています。
