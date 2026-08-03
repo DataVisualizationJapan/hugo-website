@@ -51,6 +51,12 @@ format = "オンライン"
   speaker = "藤井 政登"
   videoId = "0tX5THAXyws"
   post = "lt-llm-finetuning"
+
+[[sessions]]
+  title = "Take up Space ― スペースを取ること"
+  speaker = "Shirley Wu"
+  videoId = "FbcvI5oFBk8"
+  post = "take-up-space"
 +++
 
 2023年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
