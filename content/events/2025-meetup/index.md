@@ -10,6 +10,17 @@ peatix = "https://dvj-2025-book.peatix.com/view"
   speaker = "荻原 和樹"
   videoId = "kblc5BIfsMU"
   post = "ogiwara-communicating-data"
+[[sessions]]
+  title = "データと可視化をつなぐ「トランスフォーメーション」について考える"
+  speaker = "山辺 真幸"
+  videoId = "1wvXT5OHGb0"
+  post = "transformation-data-visualization"
+
+[[sessions]]
+  title = "超入門！Rでできるビジュアル統計学"
+  speaker = "藤井 亮介"
+  videoId = "uoMWfA0gNDM"
+  post = "r-visual-statistics"
 +++
 
 2025年12月29日にオンラインで開催した「データ可視化本 著者が語る」の記録です。データ可視化に関する書籍の著者が集い、それぞれの一冊について語りました。当日の講演の一部を、書き起こし記事として公開しています。
