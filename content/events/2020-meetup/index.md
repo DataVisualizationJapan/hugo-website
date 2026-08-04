@@ -44,6 +44,11 @@ format = "オンライン"
   speaker = "山辺 真幸"
   videoId = "Z2Y_rDQpUlg"
   post = "covid-genome-8k-viz"
+[[sessions]]
+  title = "今あえてコードから可視化を作る場合のツール"
+  speaker = "大野 圭一朗"
+  videoId = "Sgs96_gCLMk"
+  post = "code-based-viz-tools"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
