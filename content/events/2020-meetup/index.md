@@ -54,6 +54,17 @@ format = "オンライン"
   speaker = "西田 勘一郎"
   videoId = "0TnHnun8fCo"
   post = "data-literacy-viz"
+[[sessions]]
+  title = "人工衛星データのビジュアライゼーション（経済指標との関連及び利用事例としての観光経済）"
+  speaker = "大友 翔一"
+  videoId = "9mu8XP0Bir4"
+  post = "satellite-nightlight-economy"
+
+[[sessions]]
+  title = "企業ビッグデータとビジュアライゼーション"
+  speaker = "有本 昂平"
+  videoId = "Lu2Z3beiewg"
+  post = "corporate-bigdata-viz"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
