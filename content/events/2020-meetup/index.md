@@ -33,6 +33,12 @@ format = "オンライン"
   speaker = "田島 将太"
   videoId = "gDRkSe8AL1A"
   post = "lt-observable-gender-gap"
+
+[[sessions]]
+  title = "東京都新型コロナウイルス感染症対策サイトの開発に携わった話"
+  speaker = "小副川 健"
+  videoId = "TSkP6qF_l0Q"
+  post = "tokyo-covid-site"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
