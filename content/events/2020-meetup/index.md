@@ -11,6 +11,12 @@ format = "オンライン"
   post = "covid-misinformation-design"
 
 [[sessions]]
+  title = "新型コロナの特設サイトから見る報道とデータ可視化"
+  speaker = "荻原 和樹"
+  videoId = "Wj1SxEaK9mQ"
+  post = "covid-dashboard-toyokeizai"
+
+[[sessions]]
   title = "「表現伝達」をするのに最適なBIツール"
   speaker = "前側 将"
   videoId = "LIVEeRTfHEI"
