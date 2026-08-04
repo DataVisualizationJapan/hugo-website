@@ -34,6 +34,11 @@ format = "オンライン"
   speaker = "杉本 直也"
   videoId = "vItvsKP4HMg"
   post = "virtual-shizuoka"
+[[sessions]]
+  title = "ベクトルタイルとボクセルタイルによるシンプルで自由な可視化について"
+  speaker = "藤村 英範"
+  videoId = "5k95WTTCWVQ"
+  post = "vector-voxel-tiles"
 +++
 
 2021年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
