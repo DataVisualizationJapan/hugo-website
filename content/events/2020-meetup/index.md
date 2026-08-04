@@ -39,6 +39,11 @@ format = "オンライン"
   speaker = "小副川 健"
   videoId = "TSkP6qF_l0Q"
   post = "tokyo-covid-site"
+[[sessions]]
+  title = "新型コロナの最前線研究を伝える可視化と、テレビ番組のデータジャーナリズム"
+  speaker = "山辺 真幸"
+  videoId = "Z2Y_rDQpUlg"
+  post = "covid-genome-8k-viz"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
