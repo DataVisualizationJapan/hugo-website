@@ -19,6 +19,11 @@ format = "オンライン"
   speaker = "山辺 真幸"
   videoId = "B4EY3aZ7t8A"
   post = "dataviz-design-what-we-see"
+[[sessions]]
+  title = "ビジュアライゼーションとモダンWeb開発"
+  speaker = "尾上 洋介"
+  videoId = "_bkaED27FE4"
+  post = "viz-and-modern-web"
 +++
 
 2021年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
