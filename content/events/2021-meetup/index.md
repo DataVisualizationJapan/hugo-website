@@ -14,6 +14,11 @@ format = "オンライン"
   speaker = "矢崎 裕一"
   videoId = "_lfpkJKHAcU"
   post = "judgit-covid-budget"
+[[sessions]]
+  title = "「データビジュアライズデザイン」：私たちはデータから何を見ようとしているのか"
+  speaker = "山辺 真幸"
+  videoId = "B4EY3aZ7t8A"
+  post = "dataviz-design-what-we-see"
 +++
 
 2021年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
