@@ -21,6 +21,18 @@ format = "オンライン"
   speaker = "前側 将"
   videoId = "LIVEeRTfHEI"
   post = "lt-bi-tools"
+
+[[sessions]]
+  title = "Google Colaboratory によるネットワーク分析・可視化"
+  speaker = "村田 剛志"
+  videoId = "YTNjKIiagfM"
+  post = "lt-colab-network-analysis"
+
+[[sessions]]
+  title = "はじめてのData VizがTwitterで100万回見られた話 ― Observableのススメ"
+  speaker = "田島 将太"
+  videoId = "gDRkSe8AL1A"
+  post = "lt-observable-gender-gap"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
