@@ -24,6 +24,11 @@ format = "オンライン"
   speaker = "尾上 洋介"
   videoId = "_bkaED27FE4"
   post = "viz-and-modern-web"
+[[sessions]]
+  title = "汎用的な可視化ツールとしての deck.gl"
+  speaker = "清水 正行"
+  videoId = "CBon7oJmNYA"
+  post = "deckgl-general-purpose"
 +++
 
 2021年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
