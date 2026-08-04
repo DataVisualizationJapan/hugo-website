@@ -252,3 +252,354 @@
   margin: 1.5em auto;
   text-align: center;
 }
+
+/* =====================================================================
+   BRUTUS-style magazine theme
+   Ref: DESIGN.md (マガジンハウス『BRUTUS』Web 版のデザイン仕様書)
+
+   フォント代替について:
+     仕様の核心である FOT-筑紫ゴシック Pro (Fontworks) と futura-pt
+     (Adobe Fonts) はいずれも商用ライセンスが必要なため、仕様書の
+     preview.html と同じ方針で無料代替を使用している。
+     ライセンス取得後は下の --brutus-font-* 4 行を差し替えるだけで
+     本番仕様に切り替わる（他の箇所はこの変数を参照している）。
+
+   仕様からの意図的な逸脱:
+     本文 line-height を 1.5 ではなく 1.75 とした。BRUTUS は写真主体・
+     短文の雑誌だが、本サイトの記事は 1〜2 万字の日本語書き起こしで
+     あり、1.5 では可読性を損なうため。見出し・カード・UI は 1.5。
+   ===================================================================== */
+
+:root {
+  /* --- フォント: ライセンス取得時はここだけ差し替える ------------- */
+  --brutus-font-ja-b: "Noto Sans JP", sans-serif; /* → "FOT-筑紫ゴシック Pro B" */
+  --brutus-font-ja-e: "Noto Sans JP", sans-serif; /* → "FOT-筑紫ゴシック Pro E" */
+  --brutus-font-ja-h: "Noto Sans JP", sans-serif; /* → "FOT-筑紫ゴシック Pro H" */
+  --brutus-font-en:   "Jost", sans-serif;         /* → futura-pt              */
+
+  /* --- Brand / Surface ------------------------------------------- */
+  --brutus-ink:       #101010;
+  --brutus-charcoal:  #191919;
+  --brutus-white:     #ffffff;
+  --brutus-section:   #eaeaea;
+  --brutus-beige:     #e2dfd7;
+  --brutus-cream:     #f4f3ef;
+  --brutus-slate:     #394045;
+  --brutus-muted:     #939393;
+
+  /* --- Category colors（開催年ごとの面色）------------------------- */
+  --brutus-c-slate:     #577590;
+  --brutus-c-turquoise: #00c6ac;
+  --brutus-c-sky:       #5fb7ff;
+  --brutus-c-beige:     #ab9a86;
+  --brutus-c-navy:      #275ba1;
+  --brutus-c-copper:    #b87333;
+  --brutus-c-tomato:    #e63946;
+  --brutus-c-charcoal:  #191919;
+  --brutus-c-sand:      #bda295;
+}
+
+/* ---------- Stack のテーマ変数を BRUTUS に上書き -------------------- */
+:root {
+  --body-background: var(--brutus-white);
+  --body-text-color: var(--brutus-ink);
+
+  --accent-color:        var(--brutus-charcoal);
+  --accent-color-darker: #000000;
+  --accent-color-text:   var(--brutus-white);
+
+  --card-background:          var(--brutus-white);
+  --card-background-selected: var(--brutus-section);
+  --card-text-color-main:      var(--brutus-ink);
+  --card-text-color-secondary: var(--brutus-muted);
+  --card-text-color-tertiary:  var(--brutus-muted);
+  --card-separator-color:      var(--brutus-section);
+
+  /* 角丸なし（仕様 6 章: 影・角丸を使わず面色で分節する）*/
+  --card-border-radius: 0;
+  --tag-border-radius:  0;
+
+  /* タイポグラフィ: 1rem = 10px（Stack は html に 62.5%）*/
+  --base-font-family:    var(--brutus-font-ja-b);
+  --article-font-family: var(--brutus-font-ja-b);
+  --article-font-size:   1.8rem;   /* 仕様 3.4: 本文 18px */
+  --article-line-height: 1.75;     /* 仕様は 1.5。長文和文のため逸脱 */
+
+  --scrollbar-thumb: #cfcfcf;
+}
+
+/* ---------- 影を落とす（仕様 6 章）--------------------------------- */
+.article-list--tile article,
+.article-list--compact article,
+.article-page .article-content,
+.section-card,
+.widget,
+.sidebar,
+.article-list--tile article a,
+.pagination,
+.menu {
+  box-shadow: none;
+}
+
+/* ---------- 角丸を落とす ------------------------------------------ */
+.article-list--tile article,
+.article-list--tile article .article-image img,
+.article-list--compact article .article-image img,
+.article-image img,
+.article-page .article-image img,
+.tag,
+.section-card,
+.widget,
+.pagination__item,
+.article-category a,
+.dvj-btn,
+.dvj-cta-bar__btn,
+.dvj-cta-bar__label {
+  border-radius: 0;
+}
+
+/* ---------- 本文タイポグラフィ ------------------------------------- */
+body {
+  font-family: var(--brutus-font-ja-b);
+  letter-spacing: normal;          /* 仕様 3.6 */
+  font-feature-settings: normal;   /* 仕様 3.7: palt は使わない */
+}
+
+.article-content {
+  letter-spacing: normal;
+  font-feature-settings: normal;
+}
+
+/* 見出しは筑紫 H 相当・太く・行送りは雑誌的な 1.5（仕様 3.5）*/
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-title,
+.article-page .article-title {
+  font-family: var(--brutus-font-ja-h);
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--brutus-ink);
+}
+
+.article-content h2 { font-size: 2.4rem; }   /* 仕様 3.4: H2 24px */
+.article-content h3 { font-size: 1.9rem; }
+.article-content h4 { font-size: 1.6rem; font-family: var(--brutus-font-ja-e); font-weight: 700; }
+
+/* 日付・タグ・メタは欧文 Futura 相当（仕様 3.2 / 4.3）*/
+.article-time,
+.article-time--published,
+.article-time--reading,
+.article-meta,
+.pagination__item {
+  font-family: var(--brutus-font-en);
+  font-weight: 600;
+  font-size: 1.3rem;               /* 仕様 3.4: キャプション 13px */
+  letter-spacing: 0.02em;
+  color: var(--brutus-muted);
+}
+
+/* ---------- セクションヘッダー（BRUTUS のシグネチャ）--------------- */
+/* index.html が既に「和文 .section-title + 英字 .section-term」を
+   出力しているので、仕様 4.5 の対訳組みをそのまま当てられる。 */
+.home-section .section-details {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.home-section .section-term {
+  font-family: var(--brutus-font-en);
+  font-size: 1.9rem;               /* 仕様 4.5: 英字 19px / 800 */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--brutus-charcoal);
+  margin: 0;
+  order: 1;
+}
+
+.home-section .section-title {
+  font-family: var(--brutus-font-ja-h);
+  font-size: 2.4rem;               /* 仕様 4.5: 和文 24px / 800 */
+  font-weight: 800;
+  color: var(--brutus-charcoal);
+  text-transform: none;
+  margin: 0;
+  order: 2;
+}
+
+.home-section .section-description {
+  flex-basis: 100%;
+  order: 3;
+  color: var(--brutus-muted);
+  margin: 4px 0 0;
+}
+
+/* ---------- セクションを面色で分節（仕様 5 章）--------------------- */
+.home-section--categories { background: var(--brutus-cream); }
+.home-section--recent     { background: var(--brutus-beige); }
+
+.home-section--categories,
+.home-section--recent {
+  padding: 32px 24px 40px;
+}
+
+/* ---------- カード: 罫線・影なし、余白のみで区切る（仕様 4.4）------ */
+.article-list--tile article,
+.article-list--compact article {
+  background: transparent;
+  border: none;
+}
+
+.article-list--tile .article-title,
+.article-list--compact .article-title {
+  font-family: var(--brutus-font-ja-e);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.43;               /* 仕様 3.5: H3 相当 */
+}
+
+/* ---------- タグ/カテゴリ = カテゴリカラーのバッジ（仕様 4.3）------ */
+.article-category a,
+.tag a,
+.tag {
+  font-family: var(--brutus-font-en);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  color: var(--brutus-white);
+  background: var(--brutus-c-slate);
+}
+
+/* 開催年ごとに面色を切り替える（仕様 2 章 Category Colors）*/
+[href$="/categories/2025/"] { background: var(--brutus-c-slate)     !important; }
+[href$="/categories/2024/"] { background: var(--brutus-c-turquoise) !important; }
+[href$="/categories/2023/"] { background: var(--brutus-c-sky)       !important; }
+[href$="/categories/2022/"] { background: var(--brutus-c-navy)      !important; }
+[href$="/categories/2021/"] { background: var(--brutus-c-copper)    !important; }
+[href$="/categories/2020/"] { background: var(--brutus-c-beige)     !important; }
+[href$="/categories/2017/"] { background: var(--brutus-c-sand)      !important; }
+[href$="/categories/meetup/"] { background: var(--brutus-c-charcoal) !important; }
+
+/* ---------- 暗色帯（仕様 4.2）------------------------------------- */
+.dvj-event__header,
+.dvj-cta-bar__label,
+.dvj-btn {
+  background: var(--brutus-charcoal);
+  color: var(--brutus-white);
+}
+
+.dvj-event__format {
+  font-family: var(--brutus-font-en);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- フッター（仕様 2 章 Footer Slate）---------------------- */
+.site-footer {
+  background: var(--brutus-slate);
+  color: var(--brutus-white);
+  padding: 24px;
+}
+.site-footer a { color: var(--brutus-white); }
+
+/* ---------- レスポンシブ（仕様 8 章）------------------------------- */
+@media (max-width: 1024px) {
+  :root { --article-font-size: 1.7rem; }
+}
+@media (max-width: 768px) {
+  :root { --article-font-size: 1.6rem; }
+  .article-content h2 { font-size: 2.0rem; }
+  .home-section .section-title { font-size: 2.0rem; }
+  .home-section .section-term  { font-size: 1.6rem; }
+}
+
+/* =====================================================================
+   ダークモード
+   BRUTUS 仕様には暗色版が存在しない。既存 Stack のダーク配色を土台に、
+   カテゴリカラーと漆黒帯だけ BRUTUS に揃える折衷とした。
+   ===================================================================== */
+:root[data-scheme="dark"] {
+  --body-background: #1a1a1a;
+  --body-text-color: rgba(255, 255, 255, 0.87);
+  --card-background: #232323;
+  --card-background-selected: #2c2c2c;
+  --card-text-color-main: rgba(255, 255, 255, 0.92);
+  --card-text-color-secondary: rgba(255, 255, 255, 0.6);
+  --card-text-color-tertiary: rgba(255, 255, 255, 0.55);
+  --card-separator-color: rgba(255, 255, 255, 0.12);
+  --accent-color: #ffffff;
+  --accent-color-darker: #d6d6d6;
+  --accent-color-text: #101010;
+}
+
+:root[data-scheme="dark"] .home-section--categories { background: #202020; }
+:root[data-scheme="dark"] .home-section--recent     { background: #262626; }
+:root[data-scheme="dark"] .home-section .section-title,
+:root[data-scheme="dark"] .home-section .section-term { color: #ffffff; }
+:root[data-scheme="dark"] .article-content h2,
+:root[data-scheme="dark"] .article-content h3,
+:root[data-scheme="dark"] .article-content h4,
+:root[data-scheme="dark"] .article-title { color: rgba(255, 255, 255, 0.92); }
+:root[data-scheme="dark"] .site-footer { background: #16191b; }
+
+/* ---------- 既存 dvj-* コンポーネントの角丸・影を落とす -------------
+   （このファイル前半で定義済みのものを BRUTUS 仕様 6 章に合わせる）*/
+.dvj-btn,
+.dvj-event-card,
+.dvj-event__header,
+.dvj-event__format,
+.dvj-session,
+.dvj-session__thumb img,
+.dvj-cta-block,
+.dvj-cta-block__btn,
+.dvj-cta-bar,
+.dvj-cta-bar__label,
+.dvj-cta-bar__btn {
+  border-radius: 0;
+}
+
+.dvj-event-card,
+.dvj-event__header,
+.dvj-session,
+.dvj-cta-block {
+  box-shadow: none;
+}
+
+/* 影のかわりに面色と細い罫線で分節する（仕様 2 章 Border / Divider）*/
+.dvj-event-card,
+.dvj-session {
+  background: var(--brutus-cream);
+  border: none;
+}
+.dvj-cta-block {
+  background: var(--brutus-beige);
+  border-top: 4px solid var(--brutus-charcoal);
+}
+.dvj-cta-bar {
+  border-top: 3px solid var(--brutus-charcoal);
+  box-shadow: none;
+}
+.dvj-event-card--upcoming { border-left: 4px solid var(--brutus-c-tomato); }
+
+.dvj-event__format {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--brutus-white);
+}
+
+.dvj-btn--ghost {
+  background: transparent;
+  color: var(--brutus-charcoal);
+  box-shadow: inset 0 0 0 2px var(--brutus-charcoal);
+}
+
+:root[data-scheme="dark"] .dvj-event-card,
+:root[data-scheme="dark"] .dvj-session { background: #232323; }
+:root[data-scheme="dark"] .dvj-cta-block { background: #2c2c2c; border-top-color: #ffffff; }
+:root[data-scheme="dark"] .dvj-btn--ghost { color: #ffffff; box-shadow: inset 0 0 0 2px #ffffff; }

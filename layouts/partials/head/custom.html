@@ -1,4 +1,15 @@
 {{- /*
+    Web フォント — BRUTUS 風タイポグラフィ（DESIGN.md）の代替書体。
+      和文 Noto Sans JP  … FOT-筑紫ゴシック Pro B/E/H の代替
+      欧文 Jost          … futura-pt（Adobe Fonts）の代替
+    いずれも本来の書体は商用ライセンスが必要なため無料代替を使用している。
+    ライセンス取得時はここと assets/scss/custom.scss の --brutus-font-* を差し替える。
+*/ -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Jost:wght@400;600;800&display=swap">
+
+{{- /*
     構造化データ (JSON-LD) — 検索エンジン向け。
       ホーム            → Organization（社会リンク付き）
       記事(videoId有)   → VideoObject

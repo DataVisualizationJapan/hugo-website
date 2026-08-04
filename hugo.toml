@@ -13,7 +13,9 @@ theme = 'stack'
 
   [params.colorScheme]
     toggle = true
-    default = 'dark'
+    # BRUTUS は純白基調のライト専用デザインのため既定をライトに変更。
+    # トグルは残し、ダークは custom.scss 側で折衷配色を用意している。
+    default = 'light'
 
   [params.sidebar]
     subtitle = 'データビジュアライゼーションのコミュニティです'
