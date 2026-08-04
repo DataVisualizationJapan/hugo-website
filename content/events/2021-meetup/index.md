@@ -29,6 +29,11 @@ format = "オンライン"
   speaker = "清水 正行"
   videoId = "CBon7oJmNYA"
   post = "deckgl-general-purpose"
+[[sessions]]
+  title = "静岡県が目指す「VIRTUAL SHIZUOKA構想」とは？"
+  speaker = "杉本 直也"
+  videoId = "vItvsKP4HMg"
+  post = "virtual-shizuoka"
 +++
 
 2021年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
