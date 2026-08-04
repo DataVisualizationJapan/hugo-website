@@ -49,6 +49,11 @@ format = "オンライン"
   speaker = "大野 圭一朗"
   videoId = "Sgs96_gCLMk"
   post = "code-based-viz-tools"
+[[sessions]]
+  title = "データサイエンス革命の駆動力 ― データリテラシーとデータの可視化"
+  speaker = "西田 勘一郎"
+  videoId = "0TnHnun8fCo"
+  post = "data-literacy-viz"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
