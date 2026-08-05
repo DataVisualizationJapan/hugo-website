@@ -9,6 +9,36 @@ format = "オンライン"
   speaker = "矢崎 裕一"
   videoId = "ozzloyKoz1U"
   post = "lt-sigma-awards"
+[[sessions]]
+  title = "JUDGIT!、そして、コロナ予算の探索的可視化"
+  speaker = "矢崎 裕一"
+  videoId = "_lfpkJKHAcU"
+  post = "judgit-covid-budget"
+[[sessions]]
+  title = "「データビジュアライズデザイン」：私たちはデータから何を見ようとしているのか"
+  speaker = "山辺 真幸"
+  videoId = "B4EY3aZ7t8A"
+  post = "dataviz-design-what-we-see"
+[[sessions]]
+  title = "ビジュアライゼーションとモダンWeb開発"
+  speaker = "尾上 洋介"
+  videoId = "_bkaED27FE4"
+  post = "viz-and-modern-web"
+[[sessions]]
+  title = "汎用的な可視化ツールとしての deck.gl"
+  speaker = "清水 正行"
+  videoId = "CBon7oJmNYA"
+  post = "deckgl-general-purpose"
+[[sessions]]
+  title = "静岡県が目指す「VIRTUAL SHIZUOKA構想」とは？"
+  speaker = "杉本 直也"
+  videoId = "vItvsKP4HMg"
+  post = "virtual-shizuoka"
+[[sessions]]
+  title = "ベクトルタイルとボクセルタイルによるシンプルで自由な可視化について"
+  speaker = "藤村 英範"
+  videoId = "5k95WTTCWVQ"
+  post = "vector-voxel-tiles"
 +++
 
 2021年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
