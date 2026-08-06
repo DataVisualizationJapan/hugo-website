@@ -44,6 +44,12 @@ eventDate = "2022-12-27T00:00:00+09:00"
   speaker = "伊藤 昌毅"
   videoId = "V95d4KzE4-I"
   post = "public-transit-data-viz"
+
+[[sessions]]
+  title = "IBD患者さんのニーズとは？ SNSを用いた分析"
+  speaker = "渕上 綾子"
+  videoId = "S08zT98aGls"
+  post = "ibd-patient-needs-sns"
 +++
 
 2022年12月27・28日に開催したイベントです。当日の講演の一部を、書き起こし記事として公開しています。
