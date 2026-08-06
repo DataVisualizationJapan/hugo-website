@@ -38,6 +38,12 @@ eventDate = "2022-12-27T00:00:00+09:00"
   speaker = "久本 空海"
   videoId = "Zu5oBYY7M0Y"
   post = "lt-map-viz-community"
+
+[[sessions]]
+  title = "公共交通データ可視化の最新状況と可能性"
+  speaker = "伊藤 昌毅"
+  videoId = "V95d4KzE4-I"
+  post = "public-transit-data-viz"
 +++
 
 2022年12月27・28日に開催したイベントです。当日の講演の一部を、書き起こし記事として公開しています。
