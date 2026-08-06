@@ -13,6 +13,9 @@ event = "2022-meetup"
 # YouTube 動画ID
 videoId = "AD-YOMvAY7g"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2022"]
 tags = ["データジャーナリズム", "朝日新聞", "地図", "Mapbox", "オープンデータ", "交通事故"]

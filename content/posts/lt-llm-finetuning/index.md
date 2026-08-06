@@ -13,6 +13,9 @@ event = "2023-meetup"
 # YouTube 動画ID
 videoId = "0tX5THAXyws"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2023"]
 tags = ["LLM", "ファインチューニング", "教育", "AI", "研究"]

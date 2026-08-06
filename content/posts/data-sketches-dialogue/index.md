@@ -13,6 +13,9 @@ event = "2025-meetup"
 # YouTube 動画ID
 videoId = "vT3usrXi0tY"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2025"]
 tags = ["Data Sketches", "書籍", "アート", "データフィジカライゼーション", "インスタレーション", "対話"]

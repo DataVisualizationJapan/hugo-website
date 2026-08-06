@@ -13,6 +13,9 @@ event = "2021-meetup"
 # YouTube 動画ID
 videoId = "CBon7oJmNYA"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2021"]
 tags = ["deck.gl", "WebGL", "地図", "点群", "3D", "D3.js"]

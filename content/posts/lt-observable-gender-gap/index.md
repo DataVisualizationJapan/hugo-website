@@ -13,6 +13,9 @@ event = "2020-meetup"
 # YouTube 動画ID
 videoId = "gDRkSe8AL1A"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2020"]
 tags = ["Observable", "データジャーナリズム", "ジェンダーギャップ", "メディア", "D3.js"]

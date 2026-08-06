@@ -13,6 +13,9 @@ event = "2017-meetup"
 # YouTube 動画ID
 videoId = "jR754hHMnhA"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2017"]
 tags = ["earth", "気象データ", "WebGL", "D3.js", "個人プロジェクト", "オープンデータ"]

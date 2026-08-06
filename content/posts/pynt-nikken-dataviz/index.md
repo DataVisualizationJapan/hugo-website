@@ -13,6 +13,9 @@ event = "2025-disaster-viz"
 # YouTube 動画ID
 videoId = "QiNzNAz8Asc"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2025"]
 tags = ["都市", "建築", "3D都市モデル", "オープンデータ", "防災"]
