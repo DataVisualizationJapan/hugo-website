@@ -17,6 +17,12 @@ format = "オンライン"
   post = "lt-mercator"
 
 [[sessions]]
+  title = "「スクローリーテリング」から考えるジューシーなデータ可視化"
+  speaker = "久本 空海"
+  videoId = "kyE7Jvss4A8"
+  post = "scrollytelling-juicy-dataviz"
+
+[[sessions]]
   title = "データビジュアライゼーションを創造する"
   speaker = "山辺 真幸"
   videoId = "huGGeYMAXWg"
