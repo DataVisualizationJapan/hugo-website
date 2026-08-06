@@ -53,6 +53,12 @@ format = "オンライン"
   post = "lt-llm-finetuning"
 
 [[sessions]]
+  title = "詐欺グラフをだいたい全部終わらせる！"
+  speaker = "矢崎 裕一"
+  videoId = "kXiVLaaeQd0"
+  post = "misleading-charts"
+
+[[sessions]]
   title = "Take up Space ― スペースを取ること"
   speaker = "Shirley Wu"
   videoId = "FbcvI5oFBk8"

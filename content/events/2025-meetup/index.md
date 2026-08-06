@@ -10,6 +10,7 @@ peatix = "https://dvj-2025-book.peatix.com/view"
   speaker = "荻原 和樹"
   videoId = "kblc5BIfsMU"
   post = "ogiwara-communicating-data"
+
 [[sessions]]
   title = "データと可視化をつなぐ「トランスフォーメーション」について考える"
   speaker = "山辺 真幸"
