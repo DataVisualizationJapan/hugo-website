@@ -20,6 +20,7 @@ eventDate = "2022-12-27T00:00:00+09:00"
   speaker = "RJ Andrews"
   videoId = "wLXUax-LqWc"
   post = "nightingale-story"
+
 [[sessions]]
   title = "「俯瞰」可視化が情報探索・分析を変える"
   speaker = "林 尚芳"
