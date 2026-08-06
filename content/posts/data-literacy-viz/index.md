@@ -13,6 +13,9 @@ event = "2020-meetup"
 # YouTube 動画ID
 videoId = "0TnHnun8fCo"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2020"]
 tags = ["データリテラシー", "データサイエンス", "科学哲学", "探索的データ分析", "新型コロナ"]

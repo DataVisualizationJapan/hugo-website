@@ -13,6 +13,9 @@ event = "2020-meetup"
 # YouTube 動画ID
 videoId = "YTNjKIiagfM"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2020"]
 tags = ["ネットワーク分析", "Python", "Google Colaboratory", "NetworkX", "感染症モデル", "教育"]

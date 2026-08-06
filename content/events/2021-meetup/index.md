@@ -39,6 +39,16 @@ format = "オンライン"
   speaker = "藤村 英範"
   videoId = "5k95WTTCWVQ"
   post = "vector-voxel-tiles"
+[[sessions]]
+  title = "データ可視化マニヤは餅米の初夢を見るか"
+  speaker = "古川 泰人"
+  videoId = "mJ9vvwrp5UU"
+  post = "open-data-mochi-kome"
+[[sessions]]
+  title = "科学技術情報分析の面白さ"
+  speaker = "林 尚芳"
+  videoId = "GPohAEzvQxE"
+  post = "sci-tech-info-analysis"
 +++
 
 2021年12月29・30日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。

@@ -13,6 +13,9 @@ event = "2022-meetup"
 # YouTube 動画ID
 videoId = "wLXUax-LqWc"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2022"]
 tags = ["データ可視化の歴史", "ナイチンゲール", "William Farr", "書籍", "インフォグラフィックス", "公衆衛生"]

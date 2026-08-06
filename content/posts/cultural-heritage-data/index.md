@@ -13,6 +13,9 @@ event = "2024-meetup"
 # YouTube 動画ID
 videoId = "_zhUw7uhgAs"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2024"]
 tags = ["文化財", "オープンデータ", "3D計測", "テキストマイニング", "GIS", "データベース"]

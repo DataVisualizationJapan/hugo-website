@@ -13,6 +13,9 @@ event = "2020-meetup"
 # YouTube 動画ID
 videoId = "Z2Y_rDQpUlg"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2020"]
 tags = ["8K", "ゲノム", "Processing", "NHK", "新型コロナ", "系統樹", "放送"]

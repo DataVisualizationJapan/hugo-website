@@ -13,6 +13,9 @@ event = "2020-meetup"
 # YouTube 動画ID
 videoId = "dv6E6K1IzQQ"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2020"]
 tags = ["情報デザイン", "SNS", "デマ・フェイク", "報道", "可視化の考え方"]

@@ -13,6 +13,9 @@ event = "2024-meetup"
 # YouTube 動画ID
 videoId = "1C_LfqJcdMA"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2024"]
 tags = ["ネットワーク可視化", "グラフ描画", "アルゴリズム", "可視化の考え方"]

@@ -13,6 +13,9 @@ event = "2023-meetup"
 # YouTube 動画ID
 videoId = "huGGeYMAXWg"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2023"]
 tags = ["デザインプロセス", "パターン・ランゲージ", "大規模データ", "可視化の考え方", "研究"]

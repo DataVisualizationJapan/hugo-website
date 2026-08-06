@@ -13,6 +13,9 @@ event = "2025-meetup"
 # YouTube 動画ID
 videoId = "1wvXT5OHGb0"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2025"]
 tags = ["デザイン原則", "アイソタイプ", "書籍", "デザインプロセス", "可視化の考え方"]

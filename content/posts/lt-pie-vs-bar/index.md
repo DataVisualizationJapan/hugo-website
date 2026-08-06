@@ -13,6 +13,9 @@ event = "2024-meetup"
 # YouTube 動画ID
 videoId = "m2DOHo6PKqE"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2024"]
 tags = ["円グラフ", "帯グラフ", "チャートの選び方", "実験", "可視化の考え方"]

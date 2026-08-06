@@ -13,6 +13,9 @@ event = "2020-meetup"
 # YouTube 動画ID
 videoId = "Lu2Z3beiewg"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2020"]
 tags = ["企業データ", "ネットワーク可視化", "RESAS", "V-RESAS", "サプライチェーン", "ビジュアルアナリティクス"]

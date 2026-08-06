@@ -11,7 +11,7 @@ categories = [
 speakers = [
     "矢崎裕一"
 ]
-tags = []
+tags = ["書籍", "出版", "チャートの文法", "チャートの分類", "データインク比", "可視化の考え方"]
 image = "images/cover.png"
 +++
 

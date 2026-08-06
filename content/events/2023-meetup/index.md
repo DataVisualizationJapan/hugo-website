@@ -17,6 +17,12 @@ format = "オンライン"
   post = "lt-mercator"
 
 [[sessions]]
+  title = "「スクローリーテリング」から考えるジューシーなデータ可視化"
+  speaker = "久本 空海"
+  videoId = "kyE7Jvss4A8"
+  post = "scrollytelling-juicy-dataviz"
+
+[[sessions]]
   title = "データビジュアライゼーションを創造する"
   speaker = "山辺 真幸"
   videoId = "huGGeYMAXWg"
@@ -51,6 +57,12 @@ format = "オンライン"
   speaker = "藤井 政登"
   videoId = "0tX5THAXyws"
   post = "lt-llm-finetuning"
+
+[[sessions]]
+  title = "詐欺グラフをだいたい全部終わらせる！"
+  speaker = "矢崎 裕一"
+  videoId = "kXiVLaaeQd0"
+  post = "misleading-charts"
 
 [[sessions]]
   title = "Take up Space ― スペースを取ること"

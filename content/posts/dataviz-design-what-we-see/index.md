@@ -13,6 +13,9 @@ event = "2021-meetup"
 # YouTube 動画ID
 videoId = "B4EY3aZ7t8A"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2021"]
 tags = ["情報可視化", "可視化の歴史", "Society 5.0", "8K", "教育", "データ駆動型社会"]

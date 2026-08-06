@@ -13,6 +13,9 @@ event = "2021-meetup"
 # YouTube 動画ID
 videoId = "5k95WTTCWVQ"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2021"]
 tags = ["ベクトルタイル", "ボクセル", "国土地理院", "国連", "オープンソース", "Raspberry Pi"]

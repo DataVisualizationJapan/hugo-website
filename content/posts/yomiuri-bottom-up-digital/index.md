@@ -13,6 +13,9 @@ event = "2025-disaster-viz"
 # YouTube 動画ID
 videoId = "ZzO6Rt2Tsqw"
 
+# 記事のサムネイル（YouTube のサムネイル画像）
+image = "cover.jpg"
+
 # 分類（2つ目は開催年）
 categories = ["meetup", "2025"]
 tags = ["データジャーナリズム", "報道", "災害", "地図", "組織論"]
