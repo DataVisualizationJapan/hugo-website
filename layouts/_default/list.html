@@ -8,7 +8,7 @@
             {{ end }}
         </h3>
 
-        <div class="section-card section-card--plain">
+        <div class="section-card">
             <div class="section-details">
                 <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3>
                 <h1 class="section-term">{{ .Title }}</h1>
@@ -16,7 +16,7 @@
                     <h2 class="section-description">{{ . }}</h2>
                 {{ end }}
             </div>
-
+    
             {{- $image := partialCached "helper/image" (dict "Context" . "Type" "section") .RelPermalink "section" -}}
             {{ if $image.exists }}
                 <div class="section-image">
@@ -24,14 +24,14 @@
                         {{- $Permalink := $image.resource.RelPermalink -}}
                         {{- $Width := $image.resource.Width -}}
                         {{- $Height := $image.resource.Height -}}
-
+    
                         {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
                             {{- $thumbnail := $image.resource.Fill "120x120" -}}
                             {{- $Permalink = $thumbnail.RelPermalink -}}
                             {{- $Width = $thumbnail.Width -}}
                             {{- $Height = $thumbnail.Height -}}
                         {{- end -}}
-
+                        
                         <img src="{{ $Permalink }}" 
                             width="{{ $Width }}"
                             height="{{ $Height }}" 
@@ -44,56 +44,12 @@
         </div>
     </header>
 
-    {{ with .Content }}
-        <section class="section-content article-content">
-            {{ . }}
-        </section>
-    {{ end }}
-
-    {{/* Render subcategories when current taxonomy term matches a node in category_hierarchy */}}
-    {{- $tree := site.Data.category_hierarchy.categories | default (slice) -}}
-    {{- $current := .Data.Term | default "" -}}
-    {{- $currentSlug := urlize $current -}}
-    {{- $matches := where $tree "slug" "==" $currentSlug -}}
-    {{- if gt (len $matches) 0 -}}
-        {{- $node := index $matches 0 -}}
-        {{- with $node.children }}
-            {{- $taxonomyMap := site.Taxonomies.categories | default dict -}}
-            <aside>
-                <h2 class="section-title">{{ printf "%d件のサブカテゴリー" (len .) }}</h2>
-                <div class="subsection-list">
-                    <div class="article-list--tile">
-                        {{ range sort . "weight" }}
-                            {{- $child := . -}}
-                            {{- $slug := $child.slug | urlize -}}
-                            {{- $termPage := site.GetPage (printf "/categories/%s" $slug) -}}
-                            {{- $href := or (and $termPage $termPage.RelPermalink) (printf "/categories/%s/" $slug) -}}
-                            {{- $termPages := index $taxonomyMap $slug -}}
-                            {{- $count := len (or $termPages (slice)) -}}
-                            <article>
-                                <a href="{{ $href }}">
-                                    <div class="article-details">
-                                        <h2 class="article-title">{{ default (humanize $slug) $child.title }}</h2>
-                                        {{ with or $child.description (and $termPage $termPage.Params.description) }}
-                                            <p class="article-description">{{ . }}</p>
-                                        {{ end }}
-                                        {{ if gt $count 0 }}
-                                            <p class="article-meta">{{ printf "%d 件の記事" $count }}</p>
-                                        {{ end }}
-                                    </div>
-                                </a>
-                            </article>
-                        {{ end }}
-                    </div>
-                </div>
-            </aside>
-        {{- end -}}
-    {{- end -}}
-
     {{- $subsections := .Sections -}}
     {{- $pages := .Pages | complement $subsections -}}
     
     {{- if eq (len $pages) 0 -}}
+        {{/* If there are no normal pages, display subsections in list style, with pagination */}}
+        {{/* This happens with taxonomies like categories or tags */}}
         {{- $pages = $subsections -}}
         {{- $subsections = slice -}}
     {{- end -}}
@@ -111,6 +67,7 @@
         </aside>
     {{- end -}}
     
+    {{/* List only pages that are not a subsection */}}
     {{ $paginator := .Paginate $pages }}
     <section class="article-list--card">
         {{ range $paginator.Pages }}
