@@ -22,6 +22,12 @@ eventDate = "2022-12-27T00:00:00+09:00"
   post = "nightingale-story"
 
 [[sessions]]
+  title = "「見えない交差点」ができるまで"
+  speaker = "山崎 啓介"
+  videoId = "AD-YOMvAY7g"
+  post = "invisible-intersections"
+
+[[sessions]]
   title = "「俯瞰」可視化が情報探索・分析を変える"
   speaker = "林 尚芳"
   videoId = "RgOHeHJ6Pok"
