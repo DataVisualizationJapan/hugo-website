@@ -11,7 +11,7 @@ categories = [
 speakers = [
     "三中信宏"
 ]
-tags = []
+tags = ["可視化の歴史", "分類学", "系統樹", "知識の体系化", "アート", "科学哲学"]
 image = "images/p1.png"
 weight = 10
 +++
