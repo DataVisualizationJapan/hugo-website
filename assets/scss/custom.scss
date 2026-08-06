@@ -252,3 +252,91 @@
   margin: 1.5em auto;
   text-align: center;
 }
+
+/* ============================================================
+   カード形式の記事一覧（article-list--card）
+   Stack の 3 スタイル（default / compact / tile）に加えた 4 つ目。
+   テーマの CSS 変数だけを使い、ライト/ダーク両対応。
+   ============================================================ */
+
+.article-list--card {
+  display: grid;
+  /* ビューポート幅ではなくコンテナ幅で列数が決まるので、
+     サイドバーの有無やカテゴリーページでも破綻しない */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.article-list--card article {
+  background-color: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--shadow-l1);
+  overflow: hidden;
+  transition: box-shadow .3s ease, transform .15s ease;
+}
+
+.article-list--card article:hover {
+  box-shadow: var(--shadow-l2);
+  transform: translateY(-2px);
+}
+
+.article-list--card article > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+}
+
+/* サムネイル：YouTube に合わせて 16:9 */
+.article-list--card .article-image {
+  aspect-ratio: 16 / 9;
+  background-color: var(--card-separator-color);
+}
+
+.article-list--card .article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.article-list--card .article-details {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--card-padding);
+}
+
+
+.article-list--card .article-title {
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.45;
+  color: var(--card-text-color-main);
+}
+
+.article-list--card .article-card__summary {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: var(--card-text-color-secondary);
+
+  /* 4 行で省略。対応外のブラウザでは全文が出るだけで崩れない */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-list--card .article-time {
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: 1.3rem;
+  color: var(--card-text-color-tertiary);
+}
+
+/* 画像を持たない記事でも高さが揃うように */
+.article-list--card article:not(.has-image) .article-details {
+  padding-top: calc(var(--card-padding) + 4px);
+}
