@@ -52,7 +52,7 @@ event = "2022-meetup"        # content/events/<id> のフォルダ名
 videoId = "..."              # YouTube 動画ID
 image = "cover.jpg"          # YouTube サムネイル（同じディレクトリに配置）
 
-categories = ["meetup", "2022"]   # 2つ目は「イベントの開催年」
+categories = ["meetup"]
 tags = [...]                      # 既存のタグ語彙に合わせる
 summary = "検索結果・SNSシェア用の1〜2文"
 +++
@@ -74,8 +74,9 @@ summary = "検索結果・SNSシェア用の1〜2文"
 `session.post` はディレクトリ名ではなく **slug** と一致させる必要がある。
 両者が食い違っている記事が過去にあった。
 
-`categories[1]` は**記事の date の年ではなくイベントの開催年**。
-新しい年を使うときは `data/category_hierarchy.toml` にも追加する。
+**イベント単位のまとまりは `event` フィールドが担う。**カテゴリーに年を入れていた時期が
+あったが、2025年のように1年に複数イベントがあると破綻するため廃止した
+（イベントごとのページは `content/events/<id>` が既にその役割を果たしている）。
 
 ## 書き起こしの方針
 
@@ -108,7 +109,6 @@ yt-dlp --skip-download --write-auto-subs --sub-langs "ja-orig,ja" --sub-format j
 - front matter が TOML としてパースできる
 - 必須フィールドが揃っている／`slug` が一致している
 - イベントページとの相互リンクが slug で張れている
-- `categories[1]` がイベントの開催年と一致し、`category_hierarchy.toml` に存在する
 - 整文中に紛れ込んだ非日本語文字（キリル文字など）がない — 過去に混入した事故がある
 
 **完了報告をするときは、必ずチャンネル一覧と突き合わせる。**

@@ -2,7 +2,8 @@
 title = "災害と事故をめぐる可視化：報道・デザイン・建築をつなぐ対話"
 date = "2025-12-02"
 eventDate = "2025-12-02T00:00:00+09:00"
-format = "PYNT竹橋"
+venue = "PYNT竹橋"
+format = "会場"
 peatix = "https://dvj2025.peatix.com/view"
 
 [[sessions]]

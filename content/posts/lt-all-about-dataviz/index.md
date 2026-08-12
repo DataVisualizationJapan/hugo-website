@@ -5,9 +5,7 @@ slug = "lt-all-about-dataviz"
 date = "2025-10-18"
 event = "2024-meetup"
 videoId = "CTQHwFCKpw0"
-categories = [
-    "meetup","2024"
-]
+categories = ["meetup"]
 speakers = [
     "矢崎裕一"
 ]

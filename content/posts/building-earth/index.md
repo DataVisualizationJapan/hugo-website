@@ -16,8 +16,8 @@ videoId = "jR754hHMnhA"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2017"]
+# 分類
+categories = ["meetup"]
 tags = ["earth", "気象データ", "WebGL", "D3.js", "個人プロジェクト", "オープンデータ"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

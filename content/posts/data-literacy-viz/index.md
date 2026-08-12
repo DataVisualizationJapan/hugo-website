@@ -16,8 +16,8 @@ videoId = "0TnHnun8fCo"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2020"]
+# 分類
+categories = ["meetup"]
 tags = ["データリテラシー", "データサイエンス", "科学哲学", "探索的データ分析", "新型コロナ"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

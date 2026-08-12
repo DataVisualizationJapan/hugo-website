@@ -16,8 +16,8 @@ videoId = "GPohAEzvQxE"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2021"]
+# 分類
+categories = ["meetup"]
 tags = ["特許", "論文", "俯瞰図", "テキストマイニング", "知財", "研究力"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

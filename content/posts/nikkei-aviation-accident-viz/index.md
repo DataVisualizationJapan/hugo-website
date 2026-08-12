@@ -16,8 +16,8 @@ videoId = "IilIrdiAQls"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2025"]
+# 分類
+categories = ["meetup"]
 tags = ["データジャーナリズム", "報道", "OSINT", "3D", "スクロリーテリング"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

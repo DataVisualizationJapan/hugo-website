@@ -2,6 +2,8 @@
 title = "Data Visualization Japan Meetup 2020"
 date = "2020-12-28"
 eventDate = "2020-12-28T00:00:00+09:00"
+aliases = ["/categories/2020/"]
+peatix = "https://peatix.com/event/1756920"
 format = "オンライン"
 
 [[sessions]]
