@@ -377,3 +377,12 @@
 @media (min-width: 768px) {
   .home-intro__lead { font-size: 1.7rem; }
 }
+
+/* イベントの会場表示（format の隣に置く） */
+.dvj-event__venue {
+  font-size: .8rem;
+  color: var(--card-text-color-tertiary);
+  border: 1px solid var(--card-separator-color);
+  border-radius: 999px;
+  padding: 2px 10px;
+}

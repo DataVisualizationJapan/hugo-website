@@ -5,16 +5,21 @@
         <p class="dvj-event__date">
             <time datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
             {{ with .Params.format }}<span class="dvj-event__format">{{ . }}</span>{{ end }}
+            {{ with .Params.venue }}<span class="dvj-event__venue">{{ . }}</span>{{ end }}
         </p>
         <h1 class="dvj-event__title">{{ .Title }}</h1>
     </header>
 
     {{ with .Content }}<div class="article-content dvj-event__intro">{{ . }}</div>{{ end }}
 
-    {{ if or .Params.peatix .Params.connpass .Params.speakerdeck }}
+    {{/* 過去のイベントでは「申し込む」ではなく告知ページへの参照になる */}}
+    {{- $isPast := lt (time.AsTime (.Params.eventDate | default .Date)) now -}}
+    {{ if or .Params.peatix .Params.connpass .Params.doorkeeper .Params.facebook .Params.speakerdeck }}
         <div class="dvj-event__links">
-            {{ with .Params.peatix }}<a class="dvj-btn" href="{{ . }}" target="_blank" rel="noopener">Peatixで申し込む</a>{{ end }}
+            {{ with .Params.peatix }}<a class="dvj-btn{{ if $isPast }} dvj-btn--ghost{{ end }}" href="{{ . }}" target="_blank" rel="noopener">{{ if $isPast }}Peatix{{ else }}Peatixで申し込む{{ end }}</a>{{ end }}
             {{ with .Params.connpass }}<a class="dvj-btn dvj-btn--ghost" href="{{ . }}" target="_blank" rel="noopener">connpass</a>{{ end }}
+            {{ with .Params.doorkeeper }}<a class="dvj-btn dvj-btn--ghost" href="{{ . }}" target="_blank" rel="noopener">Doorkeeper</a>{{ end }}
+            {{ with .Params.facebook }}<a class="dvj-btn dvj-btn--ghost" href="{{ . }}" target="_blank" rel="noopener">Facebook イベント</a>{{ end }}
             {{ with .Params.speakerdeck }}<a class="dvj-btn dvj-btn--ghost" href="{{ . }}" target="_blank" rel="noopener">Speaker Deck</a>{{ end }}
         </div>
     {{ end }}

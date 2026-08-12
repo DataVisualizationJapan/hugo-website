@@ -31,7 +31,7 @@
                     <a class="dvj-event-card dvj-event-card--upcoming" href="{{ .RelPermalink }}">
                         <time class="dvj-event-card__date" datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
                         <span class="dvj-event-card__title">{{ .Title }}</span>
-                        {{ with .Params.format }}<span class="dvj-event-card__meta">{{ . }}</span>{{ end }}
+                        <span class="dvj-event-card__meta">{{ with .Params.format }}{{ . }}{{ end }}{{ with .Params.venue }} ・ {{ . }}{{ end }}</span>
                     </a>
                 {{ end }}
             </div>
@@ -47,7 +47,7 @@
                     <a class="dvj-event-card" href="{{ .RelPermalink }}">
                         <time class="dvj-event-card__date" datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
                         <span class="dvj-event-card__title">{{ .Title }}</span>
-                        {{ with .Params.format }}<span class="dvj-event-card__meta">{{ . }}</span>{{ end }}
+                        <span class="dvj-event-card__meta">{{ with .Params.format }}{{ . }}{{ end }}{{ with .Params.venue }} ・ {{ . }}{{ end }}</span>
                     </a>
                 {{ end }}
             </div>

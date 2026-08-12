@@ -2,6 +2,8 @@
 title = "Data Visualization Japan Meetup 2022"
 date = "2022-12-27"
 eventDate = "2022-12-27T00:00:00+09:00"
+peatix = "https://peatix.com/event/3452708"
+format = "オンライン"
 
 [[sessions]]
   title = "可視化と体系化の歴史：サイエンスとアートをまたいで"
