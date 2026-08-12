@@ -16,8 +16,8 @@ videoId = "CBon7oJmNYA"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2021"]
+# 分類
+categories = ["meetup"]
 tags = ["deck.gl", "WebGL", "地図", "点群", "3D", "D3.js"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

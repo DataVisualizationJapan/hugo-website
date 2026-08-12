@@ -16,8 +16,8 @@ videoId = "Wj1SxEaK9mQ"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2020"]
+# 分類
+categories = ["meetup"]
 tags = ["データジャーナリズム", "新型コロナ", "ダッシュボード", "報道", "オープンデータ", "GitHub"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

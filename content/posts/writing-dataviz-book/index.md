@@ -16,8 +16,8 @@ videoId = "fk2hNUVz3MQ"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2025"]
+# 分類
+categories = ["meetup"]
 tags = ["書籍", "執筆", "チャートの文法", "データ可視化", "出版"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

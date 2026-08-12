@@ -16,8 +16,8 @@ videoId = "eyrZIctNsEw"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2024"]
+# 分類
+categories = ["meetup"]
 tags = ["情報デザイン", "教育", "情報Ⅰ", "可視化の考え方"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

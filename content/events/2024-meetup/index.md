@@ -2,6 +2,7 @@
 title = "Data Visualization Japan Meetup 2024"
 date = "2024-12-28"
 eventDate = "2024-12-28T00:00:00+09:00"
+aliases = ["/categories/2024/"]
 format = "オンライン"
 peatix = "https://dvj2024.peatix.com/view"
 image = "images/cover.png"

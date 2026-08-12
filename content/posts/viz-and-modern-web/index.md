@@ -16,8 +16,8 @@ videoId = "_bkaED27FE4"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2021"]
+# 分類
+categories = ["meetup"]
 tags = ["Web開発", "React", "D3.js", "JUDGIT", "WebGPU", "WebAssembly"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

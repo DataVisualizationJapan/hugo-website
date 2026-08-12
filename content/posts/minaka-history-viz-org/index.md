@@ -5,9 +5,7 @@ slug = "minaka-history-viz-org-part1"
 date = "2025-10-18"
 event = "2022-meetup"
 videoId = "2jmQypjSVS0"
-categories = [
-    "meetup","2022"
-]
+categories = ["meetup"]
 speakers = [
     "三中信宏"
 ]

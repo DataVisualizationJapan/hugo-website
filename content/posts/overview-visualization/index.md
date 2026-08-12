@@ -16,8 +16,8 @@ videoId = "RgOHeHJ6Pok"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2022"]
+# 分類
+categories = ["meetup"]
 tags = ["俯瞰可視化", "テキストマイニング", "次元圧縮", "情報探索", "TF-IDF"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

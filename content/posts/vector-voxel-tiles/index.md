@@ -16,8 +16,8 @@ videoId = "5k95WTTCWVQ"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2021"]
+# 分類
+categories = ["meetup"]
 tags = ["ベクトルタイル", "ボクセル", "国土地理院", "国連", "オープンソース", "Raspberry Pi"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

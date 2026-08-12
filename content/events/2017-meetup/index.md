@@ -2,6 +2,7 @@
 title = "Data Visualization meetup 2017"
 date = "2017-12-26"
 eventDate = "2017-12-26T00:00:00+09:00"
+aliases = ["/categories/2017/"]
 format = "会場"
 venue = "Indeed Tokyo 目黒オフィス"
 connpass = "https://data-visualization-japan.connpass.com/event/74681/"

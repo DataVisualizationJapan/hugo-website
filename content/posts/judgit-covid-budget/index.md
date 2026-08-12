@@ -16,8 +16,8 @@ videoId = "_lfpkJKHAcU"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2021"]
+# 分類
+categories = ["meetup"]
 tags = ["JUDGIT", "行政データ", "調査報道", "D3.js", "デザインプロセス", "新型コロナ"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

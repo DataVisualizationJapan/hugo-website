@@ -16,8 +16,8 @@ videoId = "TSkP6qF_l0Q"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2020"]
+# 分類
+categories = ["meetup"]
 tags = ["シビックテック", "Code for Japan", "オープンソース", "オープンデータ", "Nuxt.js", "新型コロナ"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

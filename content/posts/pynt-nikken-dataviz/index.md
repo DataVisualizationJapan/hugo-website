@@ -16,8 +16,8 @@ videoId = "QiNzNAz8Asc"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2025"]
+# 分類
+categories = ["meetup"]
 tags = ["都市", "建築", "3D都市モデル", "オープンデータ", "防災"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

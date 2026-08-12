@@ -16,8 +16,8 @@ videoId = "v2NBbgm2bN8"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2023"]
+# 分類
+categories = ["meetup"]
 tags = ["地図", "地図投影法", "可視化の考え方"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

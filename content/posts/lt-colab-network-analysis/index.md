@@ -16,8 +16,8 @@ videoId = "YTNjKIiagfM"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2020"]
+# 分類
+categories = ["meetup"]
 tags = ["ネットワーク分析", "Python", "Google Colaboratory", "NetworkX", "感染症モデル", "教育"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）

@@ -16,8 +16,8 @@ videoId = "Z2Y_rDQpUlg"
 # 記事のサムネイル（YouTube のサムネイル画像）
 image = "cover.jpg"
 
-# 分類（2つ目は開催年）
-categories = ["meetup", "2020"]
+# 分類
+categories = ["meetup"]
 tags = ["8K", "ゲノム", "Processing", "NHK", "新型コロナ", "系統樹", "放送"]
 
 # 検索結果・SNSシェアに表示される要約（1〜2文）
