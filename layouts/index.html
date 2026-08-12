@@ -1,93 +1,41 @@
 {{ define "main" }}
-    {{/* Top categories section */}}
-    {{- $tree := site.Data.category_hierarchy.categories | default (slice) -}}
-    {{- $items := slice -}}
+    {{/*
+        トップページ。コミュニティの紹介文と写真1枚のみ。
+        （カテゴリー一覧・最新記事一覧は 2026-08 に廃止）
 
-    {{- if gt (len $tree) 0 -}}
-        {{- $taxonomyMap := site.Taxonomies.categories | default dict -}}
-        {{- range sort $tree "weight" -}}
-            {{- $slug := .slug | urlize -}}
-            {{- $termPage := site.GetPage (printf "/categories/%s" $slug) -}}
-            {{- $termPages := index $taxonomyMap $slug -}}
-            {{- $count := len (or $termPages (slice)) -}}
-            {{- $items = $items | append (dict
-                "slug" $slug
-                "title" (default (humanize $slug) .title)
-                "description" .description
-                "page" $termPage
-                "count" $count
-            ) -}}
-        {{- end -}}
-    {{- else -}}
-        {{- range .Site.Taxonomies.categories.ByCount -}}
-            {{- $items = $items | append (dict
-                "slug" .Name
-                "title" .Page.Title
-                "description" .Page.Params.description
-                "page" .Page
-                "count" (len .Pages)
-            ) -}}
+        写真は assets/img/ に置く。ファイル名は home.jpg / home.png / home.webp の
+        いずれか。置かれていなければ写真のブロックごと描画しない（ビルドは通る）。
+    */}}
+    {{- $hero := "" -}}
+    {{- range slice "img/home.jpg" "img/home.jpeg" "img/home.png" "img/home.webp" -}}
+        {{- if not $hero -}}
+            {{- with resources.Get . -}}
+                {{- $hero = . -}}
+            {{- end -}}
         {{- end -}}
     {{- end -}}
 
-    {{- if gt (len $items) 0 -}}
-        <section class="home-section home-section--categories">
-            <header class="section-card section-card--plain">
-                <div class="section-details">
-                    <h3 class="section-title">カテゴリー</h3>
-                    <h1 class="section-term">Categories</h1>
-                    <p class="section-description">トップカテゴリー</p>
-                </div>
-            </header>
+    <section class="home-intro">
+        {{- with $hero }}
+            <figure class="home-intro__figure">
+                {{- if ne (path.Ext .RelPermalink) ".svg" -}}
+                    {{- $w := .Resize "960x webp q85" -}}
+                    {{- $w2 := .Resize "1920x webp q85" -}}
+                    <img src="{{ $w.RelPermalink }}"
+                        srcset="{{ $w.RelPermalink }} 960w, {{ $w2.RelPermalink }} 1920w"
+                        sizes="(min-width: 1024px) 700px, 100vw"
+                        width="{{ $w.Width }}" height="{{ $w.Height }}"
+                        alt="満席の会場で、スクリーンに資料を映しながら登壇者が話している勉強会の様子">
+                {{- else -}}
+                    <img src="{{ .RelPermalink }}" alt="Data Visualization Japan">
+                {{- end -}}
+            </figure>
+        {{- end }}
 
-            <div class="subsection-list">
-                <div class="article-list--tile">
-                    {{ range $items }}
-                        {{- $page := .page -}}
-                        {{- $href := or (and $page $page.RelPermalink) (printf "/categories/%s/" .slug) -}}
-                        <article>
-                            <a href="{{ $href }}">
-                                <div class="article-details">
-                                    <h2 class="article-title">{{ .title }}</h2>
-                                    {{ with or .description (and $page $page.Params.description) }}
-                                        <p class="article-description">{{ . }}</p>
-                                    {{ end }}
-                                    {{ if gt .count 0 }}
-                                        <p class="article-meta">{{ printf "%d 件の記事" .count }}</p>
-                                    {{ end }}
-                                </div>
-                            </a>
-                        </article>
-                    {{ end }}
-                </div>
-            </div>
-        </section>
-    {{- end -}}
-
-    {{/* Latest articles section */}}
-    {{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
-    {{- $notHidden := where .Site.RegularPages "Params.hidden" "!=" true -}}
-    {{- $filtered := ($pages | intersect $notHidden) -}}
-    {{- $filtered = sort $filtered "Date" "desc" -}}
-    {{- $recentCount := default 6 .Site.Params.homepage.recentCount -}}
-    {{- $recent := first $recentCount $filtered -}}
-
-    {{- if gt (len $recent) 0 -}}
-        <section class="home-section home-section--recent">
-            <header class="section-card section-card--plain">
-                <div class="section-details">
-                    <h3 class="section-title">最新記事</h3>
-                    <h1 class="section-term">Latest Posts</h1>
-                </div>
-            </header>
-
-            <div class="article-list--compact">
-                {{ range $recent }}
-                    {{ partial "article-list/compact" . }}
-                {{ end }}
-            </div>
-        </section>
-    {{- end -}}
+        <div class="home-intro__body">
+            <p class="home-intro__lead">データ・ビジュアライゼーションにまつわる実践的なノウハウやツールなどを共有していくコミュニティです。定期的に勉強会やミートアップを開催しています。</p>
+        </div>
+    </section>
 
     {{ partialCached "footer/footer" . }}
 {{ end }}

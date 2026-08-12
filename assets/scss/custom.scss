@@ -340,3 +340,40 @@
 .article-list--card article:not(.has-image) .article-details {
   padding-top: calc(var(--card-padding) + 4px);
 }
+
+/* ============================================================
+   トップページ（紹介文＋写真1枚）
+   ============================================================ */
+
+.home-intro {
+  background-color: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--shadow-l1);
+  overflow: hidden;
+}
+
+.home-intro__figure {
+  margin: 0;
+  line-height: 0;
+}
+
+.home-intro__figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.home-intro__body {
+  padding: var(--card-padding);
+}
+
+.home-intro__lead {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 2;
+  color: var(--card-text-color-main);
+}
+
+@media (min-width: 768px) {
+  .home-intro__lead { font-size: 1.7rem; }
+}
