@@ -7,6 +7,8 @@
 
     {{ with .Content }}<div class="article-content dvj-events-intro">{{ . }}</div>{{ end }}
 
+    {{/* 開催の記録は一時的に非表示。戻すときはこの if を外す。 */}}
+    {{ if false }}
     <section class="dvj-block" aria-label="開催の記録">
         <div class="dvj-block__head">
             <h2 class="dvj-block__title">開催の記録</h2>
@@ -25,6 +27,7 @@
             </div>
         </div>
     </section>
+    {{ end }}
 
     {{- $now := now -}}
     {{- $up := slice -}}

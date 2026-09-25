@@ -1,7 +1,7 @@
 {{ define "main" }}
     {{/*
         トップページ（2026-09 改訂・案D）
-          1. 写真＋紹介文（マゼンタの帯）＋開催記録の年表
+          1. 写真＋紹介文（マゼンタの帯）。開催記録の年表は一時的に非表示
           2. Sigma Awards エントリー一覧へのカード
           3. 新着の講演（posts の新しい順に4件）
           4. 登壇者から探す（speakers taxonomy の多い順に8名）
@@ -50,6 +50,8 @@
             </div>
         </div>
 
+        {{/* 開催記録は一時的に非表示。戻すときはこの if を外す。 */}}
+        {{ if false }}
         <div class="dvj-hero__record">
             <div class="dvj-block__head">
                 <h2 class="dvj-block__title">{{ with first 1 (sort (where site.RegularPages "Section" "events") "Params.eventDate" "asc") }}{{ range . }}{{ (time.AsTime (.Params.eventDate | default .Date)).Year }}{{ end }}{{ end }}年からの開催記録</h2>
@@ -62,6 +64,7 @@
                 <span>高さ＝記録のある講演数</span>
             </div>
         </div>
+        {{ end }}
     </section>
 
     <section class="dvj-home-section">
