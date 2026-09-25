@@ -25,17 +25,20 @@ theme = 'stack'
 
   [params.widgets]
 
+  # 記事一覧・タグ・登壇者などの一覧ページ（_default/list.html）
+  # カテゴリーは meetup の1つだけなので外し、コミュニティ導線を先頭に置く
   [[params.widgets.homepage]]
-    type = 'categories'
-
-    [params.widgets.homepage.params]
-      limit = 10
+    type = 'community'
 
   [[params.widgets.homepage]]
     type = 'tag-cloud'
 
     [params.widgets.homepage.params]
       limit = 15
+
+  # トップとイベント一覧（本文側にトピック・年表があるページ）
+  [[params.widgets.dvj]]
+    type = 'community'
 
   [[params.widgets.page]]
     type = 'categories'
@@ -127,6 +130,7 @@ theme = 'stack'
   posts = '/:slug/'
 
 # 左サイドバーのソーシャルリンク（コミュニティ導線）
+# params.desc があるものは右サイドバー「コミュニティに参加する」にも並ぶ
 [[menu.social]]
   identifier = 'youtube'
   name = 'YouTube'
@@ -134,6 +138,7 @@ theme = 'stack'
 
   [menu.social.params]
     icon = 'brand-youtube'
+    desc = '講演動画をすべて公開しています'
 
 [[menu.social]]
   identifier = 'facebook'
@@ -142,6 +147,7 @@ theme = 'stack'
 
   [menu.social.params]
     icon = 'brand-facebook'
+    desc = '情報交換とイベントの告知'
 
 [[menu.social]]
   identifier = 'connpass'
@@ -150,6 +156,7 @@ theme = 'stack'
 
   [menu.social.params]
     icon = 'calendar-event'
+    desc = '次回イベントの通知を受け取る'
 
 [[menu.social]]
   identifier = 'rss'

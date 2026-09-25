@@ -1,0 +1,21 @@
+{{- /*
+    右サイドバー「コミュニティに参加する」。
+    hugo.toml の [[menu.social]] のうち params.desc を持つものだけを並べる（RSS は除外される）。
+*/ -}}
+<section class="widget dvj-community">
+    <h2 class="widget-title section-title">コミュニティに参加する</h2>
+    <div class="dvj-community__list">
+        {{ range site.Menus.social }}
+            {{ $item := . }}
+            {{ with .Params.desc }}
+                <a class="dvj-community__item" href="{{ $item.URL }}" target="_blank" rel="noopener">
+                    {{ partial "helper/icon" (default "link" $item.Params.icon) }}
+                    <span class="dvj-community__text">
+                        <span class="dvj-community__name">{{ $item.Name }}</span>
+                        <span class="dvj-community__desc">{{ . }}</span>
+                    </span>
+                </a>
+            {{ end }}
+        {{ end }}
+    </div>
+</section>

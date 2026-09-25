@@ -71,3 +71,10 @@
 {{- /* RSS フィードの自動検出（フィードリーダー用） */ -}}
 <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
 
+{{- /*
+    日本語フォント。Mac/iOS は Hiragino が先に当たるので、主に Windows / Android 用。
+    Google Fonts は unicode-range で分割配信されるため、使う文字のぶんだけ読み込まれる。
+*/ -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">

@@ -1,14 +1,30 @@
 {{ define "main" }}
-    <header class="dvj-events-header">
-        <div class="section-card">
-            <div class="section-details">
-                <h1 class="section-term">{{ .Title }}</h1>
-                {{ with .Params.description }}<h2 class="section-description">{{ . }}</h2>{{ end }}
-            </div>
-        </div>
+<div class="dvj-events" data-dvj-events>
+    <header class="dvj-page-head">
+        <h1 class="dvj-page-head__title">{{ .Title }}</h1>
+        {{ with .Params.description }}<p class="dvj-page-head__lead">{{ . }}</p>{{ end }}
     </header>
 
     {{ with .Content }}<div class="article-content dvj-events-intro">{{ . }}</div>{{ end }}
+
+    <section class="dvj-block" aria-label="開催の記録">
+        <div class="dvj-block__head">
+            <h2 class="dvj-block__title">開催の記録</h2>
+            <span class="dvj-block__note">年をクリックで絞り込み</span>
+        </div>
+        {{ partial "dvj/timeline.html" (dict "interactive" true) }}
+        <div class="dvj-filter-row">
+            <div class="dvj-filters" role="group" aria-label="開催形式">
+                <button type="button" class="dvj-filter" data-dvj-format="all" aria-pressed="true">すべて</button>
+                <button type="button" class="dvj-filter" data-dvj-format="venue" aria-pressed="false">会場</button>
+                <button type="button" class="dvj-filter" data-dvj-format="online" aria-pressed="false">オンライン</button>
+            </div>
+            <div class="dvj-legend">
+                <span><i class="dvj-legend__swatch dvj-legend__swatch--venue"></i>会場</span>
+                <span><i class="dvj-legend__swatch dvj-legend__swatch--online"></i>オンライン</span>
+            </div>
+        </div>
+    </section>
 
     {{- $now := now -}}
     {{- $up := slice -}}
@@ -23,40 +39,72 @@
     {{- end -}}
 
     {{- with sort $up "Params.eventDate" "asc" -}}
-        <section class="dvj-event-group">
-            <h2 class="section-title">開催予定</h2>
-            <div class="dvj-event-list">
-                {{ range . }}
-                    {{ $d := time.AsTime (.Params.eventDate | default .Date) }}
-                    <a class="dvj-event-card dvj-event-card--upcoming" href="{{ .RelPermalink }}">
-                        <time class="dvj-event-card__date" datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
-                        <span class="dvj-event-card__title">{{ .Title }}</span>
-                        <span class="dvj-event-card__meta">{{ with .Params.format }}{{ . }}{{ end }}{{ with .Params.venue }} ・ {{ . }}{{ end }}</span>
-                    </a>
-                {{ end }}
+        <section class="dvj-event-group" data-dvj-group>
+            <h2 class="section-title">開催予定 <span class="dvj-count" data-dvj-count>{{ len . }}件</span></h2>
+            <div class="dvj-ev-list">
+                {{ range . }}{{ partial "dvj/event-card.html" . }}{{ end }}
             </div>
         </section>
     {{- end -}}
 
     {{- with sort $past "Params.eventDate" "desc" -}}
-        <section class="dvj-event-group">
-            <h2 class="section-title">過去のイベント</h2>
-            <div class="dvj-event-list">
-                {{ range . }}
-                    {{ $d := time.AsTime (.Params.eventDate | default .Date) }}
-                    <a class="dvj-event-card" href="{{ .RelPermalink }}">
-                        <time class="dvj-event-card__date" datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
-                        <span class="dvj-event-card__title">{{ .Title }}</span>
-                        <span class="dvj-event-card__meta">{{ with .Params.format }}{{ . }}{{ end }}{{ with .Params.venue }} ・ {{ . }}{{ end }}</span>
-                    </a>
-                {{ end }}
+        <section class="dvj-event-group" data-dvj-group>
+            <h2 class="section-title">過去のイベント <span class="dvj-count" data-dvj-count>{{ len . }}件</span></h2>
+            <div class="dvj-ev-list">
+                {{ range . }}{{ partial "dvj/event-card.html" . }}{{ end }}
             </div>
         </section>
     {{- end -}}
+
+    <p class="dvj-empty" data-dvj-empty hidden>該当するイベントはありません</p>
+</div>
+
+<script>
+(function () {
+    var root = document.querySelector('[data-dvj-events]');
+    if (!root) return;
+    var year = null, format = 'all';
+    var timeline = root.querySelector('.dvj-timeline');
+    var years = root.querySelectorAll('.dvj-timeline__year');
+    var filters = root.querySelectorAll('[data-dvj-format]');
+    var groups = root.querySelectorAll('[data-dvj-group]');
+    var empty = root.querySelector('[data-dvj-empty]');
+
+    function apply() {
+        var total = 0;
+        groups.forEach(function (g) {
+            var n = 0;
+            g.querySelectorAll('.dvj-ev').forEach(function (c) {
+                var ok = (!year || c.dataset.year === year) && (format === 'all' || c.dataset.format === format);
+                c.hidden = !ok;
+                if (ok) n++;
+            });
+            g.hidden = n === 0;
+            var count = g.querySelector('[data-dvj-count]');
+            if (count) count.textContent = n + '件';
+            total += n;
+        });
+        years.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.year === year)); });
+        filters.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.dvjFormat === format)); });
+        if (timeline) timeline.toggleAttribute('data-active', !!year);
+        if (empty) empty.hidden = total > 0;
+    }
+
+    years.forEach(function (b) {
+        b.addEventListener('click', function () {
+            year = year === b.dataset.year ? null : b.dataset.year;
+            apply();
+        });
+    });
+    filters.forEach(function (b) {
+        b.addEventListener('click', function () { format = b.dataset.dvjFormat; apply(); });
+    });
+})();
+</script>
 
     {{ partialCached "footer/footer" . }}
 {{ end }}
 
 {{ define "right-sidebar" }}
-    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "dvj") }}
 {{ end }}

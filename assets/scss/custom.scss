@@ -1,63 +1,264 @@
-/* Home page custom layout tweaks */
+/* ============================================================
+   Data Visualization Japan — 配色・書体（案D, 2026-09）
+   Stack の CSS 変数を上書きする。色はここ以外に直書きしない。
+   ライト＝:root、ダーク＝:root[data-scheme="dark"]（Stack と同じ詳細度で後から読む）
+   ============================================================ */
+:root {
+  /* ロゴのマゼンタ。塗り（ボタン・帯・棒）に使う。白文字で 4.8:1 */
+  --dvj-brand: #c4468b;
+  --dvj-brand-ink: #fff;
+  --dvj-brand-ink-soft: rgba(255, 255, 255, .8);
+  --dvj-brand-strong: #8f2862;
+  --dvj-online: #bdb6bb;
+  --dvj-chip-background: #efedea;
+  --dvj-overlay: rgba(0, 0, 0, .72);
+
+  --body-background: #f6f5f3;
+  /* 文字として使うアクセント（白地で 5.6:1） */
+  --accent-color: #b0357a;
+  --accent-color-darker: #8f2862;
+  --accent-color-text: #fff;
+  --body-text-color: #57535a;
+
+  --card-background: #fff;
+  --card-background-selected: #efedea;
+  --card-text-color-main: #1a181b;
+  --card-text-color-secondary: #57535a;
+  --card-text-color-tertiary: #6e6a70;
+  --card-separator-color: rgba(0, 0, 0, .09);
+  --card-border-radius: 8px;
+  --tag-border-radius: 999px;
+
+  /* 影をやめて 1px の罫線に。Stack の全コンポーネントがこの変数を使うのでまとめて変わる */
+  --shadow-l1: 0 0 0 1px var(--card-separator-color);
+  --shadow-l2: 0 0 0 1px var(--dvj-brand);
+
+  --link-background-color: 196, 70, 139;
+  --link-background-opacity: .3;
+  --link-background-opacity-hover: .45;
+  --blockquote-background-color: #f3f1ee;
+
+  --menu-icon-separation: 14px;
+
+  /* 中国語フォント（PingFang SC / Hiragino Sans GB）を外し、日本語フォントを指定 */
+  --base-font-family: "Lato", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "BIZ UDPGothic", Meiryo, sans-serif;
+  --code-font-family: Menlo, Monaco, Consolas, "Courier New", "Noto Sans JP", monospace;
+}
+
+:root[data-scheme="dark"] {
+  --dvj-online: #6f6873;
+  --dvj-chip-background: rgba(255, 255, 255, .07);
+
+  --body-background: #18171a;
+  --accent-color: #f29ac8;
+  --accent-color-darker: #f7bddb;
+  --accent-color-text: #1a181b;
+  --body-text-color: rgba(255, 255, 255, .72);
+
+  --card-background: #232126;
+  --card-background-selected: rgba(255, 255, 255, .07);
+  --card-text-color-main: #f3f1f4;
+  --card-text-color-secondary: rgba(255, 255, 255, .72);
+  --card-text-color-tertiary: rgba(255, 255, 255, .58);
+  --card-separator-color: rgba(255, 255, 255, .1);
+  --blockquote-background-color: #2c2a2f;
+}
+
+/* ============================================================
+   テーマ全体の調整
+   ============================================================ */
+
+/* 見出し：英字大文字化をやめ、マゼンタの短い線を添える */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: none;
+  color: var(--card-text-color-main);
+}
+.section-title::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--dvj-brand);
+}
+.section-title a { color: inherit; }
+
+footer.site-footer::before { background: var(--dvj-brand); }
+
+.tagCloud .tagCloud-tags { gap: 8px; }
+.tagCloud .tagCloud-tags a {
+  padding: 6px 12px;
+  font-size: 1.3rem;
+}
+
+/* 左サイドバー（PC） */
+@media (min-width: 768px) {
+  .left-sidebar,
+  .left-sidebar.compact { --sidebar-avatar-size: 56px; }
+
+  .sidebar header { gap: 14px; }
+  .sidebar header .site-avatar .site-logo { border-radius: 12px; box-shadow: none; }
+  .sidebar header .site-meta { gap: 6px; }
+  .sidebar header .site-name { font-size: 1.7rem; line-height: 1.3; }
+  .sidebar header .site-description { font-size: 1.3rem; line-height: 1.5; }
+
+  /* ソーシャルはダークモード切替の下へ */
+  .left-sidebar .menu-social { order: 1; }
+  .left-sidebar .menu-social svg { width: 20px; height: 20px; }
+
+  #main-menu,
+  #main-menu .menu-bottom-section ol { gap: 6px; }
+
+  #main-menu li a {
+    width: calc(100% + 24px);
+    margin: 0 -12px;
+    padding: 9px 12px;
+    border-radius: 8px;
+  }
+  #main-menu li a:hover { background: var(--card-background-selected); }
+  #main-menu li.current a {
+    background: var(--card-background-selected);
+    box-shadow: inset 3px 0 0 var(--dvj-brand);
+    color: var(--card-text-color-main);
+  }
+  #dark-mode-toggle { padding: 9px 0; }
+}
+
+/* 左サイドバー（スマホ）：横並びのコンパクトなヘッダー＋2列メニュー */
+@media (max-width: 767.98px) {
+  .main-container { padding-top: 0; gap: 0; }
+  main.main { padding-top: 20px; }
+
+  .left-sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: auto;
+    margin: 0 -15px;
+    padding: 10px 16px;
+    gap: 0;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--card-separator-color);
+    --sidebar-avatar-size: 40px;
+  }
+  .left-sidebar header {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding-right: 56px;
+  }
+  .left-sidebar header .site-avatar .site-logo { border-radius: 8px; box-shadow: none; }
+  .left-sidebar header .site-meta { gap: 2px; }
+  .left-sidebar header .site-name { font-size: 1.5rem; line-height: 1.3; }
+  .left-sidebar header .site-name a { color: var(--card-text-color-main); }
+  .left-sidebar header .site-description { font-size: 1.1rem; line-height: 1.4; color: var(--card-text-color-tertiary); }
+
+  #toggle-menu {
+    top: 10px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--card-separator-color);
+    border-radius: 8px;
+  }
+  #toggle-menu .hamburger-box { width: 20px; height: 14px; }
+  #toggle-menu .hamburger-inner,
+  #toggle-menu .hamburger-inner::before,
+  #toggle-menu .hamburger-inner::after { width: 20px; }
+  #toggle-menu .hamburger-inner::before { top: -6px; }
+  #toggle-menu .hamburger-inner::after { bottom: -6px; }
+
+  .left-sidebar .menu-social { display: none; }
+  .left-sidebar:has(#main-menu.show) .menu-social {
+    display: flex;
+    order: 1;
+    gap: 8px;
+    padding: 12px 0 4px;
+  }
+  .left-sidebar .menu-social a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--card-separator-color);
+    border-radius: 8px;
+  }
+  .left-sidebar .menu-social svg { width: 20px; height: 20px; }
+
+  #main-menu.show {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin: 10px -8px 0;
+    padding: 8px 0 0;
+    background: transparent;
+    box-shadow: none;
+    border-top: 1px solid var(--card-separator-color);
+  }
+  #main-menu li a {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    padding: 0 12px;
+    border-radius: 8px;
+    gap: 12px;
+  }
+  #main-menu li.current a {
+    background: var(--card-background-selected);
+    color: var(--card-text-color-main);
+  }
+  #main-menu li.menu-bottom-section {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    padding: 12px 12px 0;
+    border-top: 1px solid var(--card-separator-color);
+  }
+  #dark-mode-toggle { min-height: 44px; }
+}
+
+/* ============================================================
+   一覧ページ（カテゴリー・タグ・登壇者など）
+   ============================================================ */
 .home-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-bottom: 40px;
 }
-
-.home-section .section-card {
-  margin-bottom: 0;
-  padding: 0;
-}
-
-.section-card--plain {
-  background: none;
-  box-shadow: none;
-  padding-left: 0;
-}
-
-.home-section .subsection-list {
-  margin-top: 4px;
-}
-
+.home-section .section-card { margin-bottom: 0; padding: 0; }
+.section-card--plain { background: none; box-shadow: none; padding-left: 0; }
+.home-section .subsection-list { margin-top: 4px; }
 .home-section .subsection-list .article-list--tile {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   padding-bottom: 0;
 }
-
-.home-section .subsection-list .article-list--tile article {
-  margin-right: 0;
-}
-
+.home-section .subsection-list .article-list--tile article { margin-right: 0; }
 .home-section--recent .article-list--compact {
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: var(--small-card-padding);
 }
-
-.home-section--recent .article-list--compact article > a {
-  padding: var(--small-card-padding);
-}
-
-.home-section--recent .article-list--compact article:not(:last-of-type) {
-  border-bottom: none;
-}
-
+.home-section--recent .article-list--compact article > a { padding: var(--small-card-padding); }
+.home-section--recent .article-list--compact article:not(:last-of-type) { border-bottom: none; }
 .home-section--recent .article-list--compact article + article {
   margin-top: 4px;
   padding-top: var(--small-card-padding);
   border-top: 1.5px solid var(--card-separator-color);
 }
 
-.section-content {
-  margin: 6px 0 18px;
-  color: var(--body-text-color);
-}
-
+.section-content { margin: 6px 0 18px; color: var(--body-text-color); }
 .section-content.article-content {
   background: none;
   box-shadow: none;
@@ -65,179 +266,14 @@
   padding: 0;
   margin-top: calc(-1 * var(--section-separation) + 12px);
 }
-
 .section-content img,
 .section-content figure,
 .section-content table,
-.section-content pre {
-  max-width: 100%;
-}
-
-.section-content img {
-  height: auto;
-  display: block;
-  margin: 1.5em auto;
-}
-
-/* ============================================================
-   Data Visualization Japan — イベント / CTA
-   （テーマの CSS 変数を使い、ライト/ダーク両対応）
-   ============================================================ */
-
-/* ボタン */
-.dvj-btn {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 8px;
-  background: var(--accent-color);
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  transition: filter .15s ease;
-}
-.dvj-btn:hover { filter: brightness(1.08); }
-.dvj-btn--ghost {
-  background: transparent;
-  color: var(--accent-color);
-  box-shadow: inset 0 0 0 2px var(--accent-color);
-}
-
-/* イベント一覧 */
-.dvj-event-group { margin: 28px 0; }
-.dvj-event-group .section-title { margin-bottom: 12px; }
-.dvj-event-list { display: flex; flex-direction: column; gap: 12px; }
-.dvj-event-card {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-  padding: 16px 20px;
-  border-radius: 12px;
-  background: var(--card-background);
-  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
-  text-decoration: none;
-  color: var(--card-text-color-main);
-  transition: transform .15s ease;
-}
-.dvj-event-card:hover { transform: translateY(-2px); }
-.dvj-event-card--upcoming { border-left: 4px solid var(--accent-color); }
-.dvj-event-card__date {
-  font-variant-numeric: tabular-nums;
-  color: var(--accent-color);
-  font-weight: 700;
-}
-.dvj-event-card__title { font-weight: 700; }
-.dvj-event-card__meta {
-  font-size: .85rem;
-  color: var(--card-text-color-tertiary);
-}
-
-/* イベント個別ページ */
-.dvj-event { display: flex; flex-direction: column; gap: 18px; }
-.dvj-event__header {
-  color: var(--card-text-color-main);
-  padding: 24px;
-  border-radius: 12px;
-  background: var(--card-background);
-  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
-}
-.dvj-event__date {
-  display: flex; gap: 12px; align-items: center;
-  color: var(--accent-color); font-weight: 700; margin: 0 0 6px;
-}
-.dvj-event__format {
-  font-size: .8rem; color: var(--card-text-color-tertiary);
-  border: 1px solid var(--card-separator-color); border-radius: 999px; padding: 2px 10px;
-}
-.dvj-event__title { margin: 0; font-size: 1.6rem; }
-.dvj-event__links { display: flex; flex-wrap: wrap; gap: 12px; }
-
-/* セッション */
-.dvj-sessions { display: flex; flex-direction: column; gap: 14px; }
-.dvj-session {
-  color: var(--card-text-color-main);
-  display: flex; gap: 16px;
-  padding: 14px; border-radius: 12px;
-  background: var(--card-background);
-  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
-}
-.dvj-session__thumb { flex: 0 0 200px; max-width: 40%; }
-.dvj-session__thumb img { width: 100%; height: auto; border-radius: 8px; display: block; }
-.dvj-session__title { margin: 0 0 4px; font-size: 1.1rem; }
-.dvj-session__speaker { color: var(--card-text-color-secondary); margin: 0 0 8px; }
-.dvj-session__links { display: flex; flex-wrap: wrap; gap: 16px; margin: 0; }
-.dvj-session__links a { font-weight: 600; }
-
-/* 記事末尾の CTA ブロック */
-.dvj-cta-block {
-  margin-top: 28px;
-  padding: 24px;
-  border-radius: 14px;
-  background: var(--card-background);
-  box-shadow: var(--shadow-l1, 0 2px 6px rgba(0, 0, 0, .08));
-  border-top: 4px solid var(--accent-color);
-  color: var(--card-text-color-main);
-  text-align: center;
-}
-.dvj-cta-block__label {
-  color: var(--accent-color); font-weight: 700; letter-spacing: .08em;
-  font-size: .8rem; margin: 0 0 6px;
-}
-.dvj-cta-block__title { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; }
-.dvj-cta-block__meta { color: var(--card-text-color-secondary); margin: 0 0 16px; }
-.dvj-cta-block__btn {
-  display: inline-block; padding: 12px 28px; border-radius: 10px;
-  background: var(--accent-color); color: #fff; font-weight: 700; text-decoration: none;
-}
-.dvj-cta-block__sub { margin: 14px 0 0; font-size: .9rem; }
-
-/* 全ページ共通の下部バー */
-.dvj-cta-bar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
-  background: var(--card-background);
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, .18);
-  border-top: 3px solid var(--accent-color);
-}
-.dvj-cta-bar__inner {
-  max-width: 1000px; margin: 0 auto;
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 16px;
-}
-.dvj-cta-bar__label {
-  flex: 0 0 auto; font-size: .72rem; font-weight: 700; letter-spacing: .06em;
-  color: #fff; background: var(--accent-color); border-radius: 999px; padding: 3px 10px;
-}
-.dvj-cta-bar__title {
-  flex: 1 1 auto; font-weight: 700; color: var(--card-text-color-main);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.dvj-cta-bar__date { margin-left: 10px; color: var(--card-text-color-tertiary); font-weight: 500; }
-.dvj-cta-bar__btn {
-  flex: 0 0 auto; padding: 8px 18px; border-radius: 8px;
-  background: var(--accent-color); color: #fff; font-weight: 700; text-decoration: none;
-}
-.dvj-cta-bar__close {
-  flex: 0 0 auto; background: none; border: none; cursor: pointer;
-  font-size: 1.2rem; line-height: 1; color: var(--card-text-color-tertiary); padding: 4px 8px;
-}
-
-@media (max-width: 640px) {
-  .dvj-cta-bar__label,
-  .dvj-cta-bar__date { display: none; }
-  .dvj-session { flex-direction: column; }
-  .dvj-session__thumb { flex-basis: auto; max-width: 100%; }
-}
-
-.section-content p > img {
-  margin: 1.5em auto;
-}
-
+.section-content pre { max-width: 100%; }
+.section-content img { height: auto; display: block; margin: 1.5em auto; }
+.section-content p > img { margin: 1.5em auto; }
 .section-content.article-content ul,
-.section-content.article-content ol {
-  background: none;
-  padding-left: 0;
-}
-
+.section-content.article-content ol { background: none; padding-left: 0; }
 .section-content.article-content blockquote,
 .section-content.article-content figure,
 .section-content.article-content .highlight,
@@ -250,26 +286,14 @@
   margin-right: 0;
   width: 100%;
 }
+.section-content figure { margin: 1.5em auto; text-align: center; }
 
-.section-content figure {
-  margin: 1.5em auto;
-  text-align: center;
-}
-
-/* ============================================================
-   カード形式の記事一覧（article-list--card）
-   Stack の 3 スタイル（default / compact / tile）に加えた 4 つ目。
-   テーマの CSS 変数だけを使い、ライト/ダーク両対応。
-   ============================================================ */
-
+/* カード形式の記事一覧（article-list--card） */
 .article-list--card {
   display: grid;
-  /* ビューポート幅ではなくコンテナ幅で列数が決まるので、
-     サイドバーの有無やカテゴリーページでも破綻しない */
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
 }
-
 .article-list--card article {
   background-color: var(--card-background);
   border-radius: var(--card-border-radius);
@@ -277,32 +301,10 @@
   overflow: hidden;
   transition: box-shadow .3s ease, transform .15s ease;
 }
-
-.article-list--card article:hover {
-  box-shadow: var(--shadow-l2);
-  transform: translateY(-2px);
-}
-
-.article-list--card article > a {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  color: inherit;
-}
-
-/* サムネイル：YouTube に合わせて 16:9 */
-.article-list--card .article-image {
-  aspect-ratio: 16 / 9;
-  background-color: var(--card-separator-color);
-}
-
-.article-list--card .article-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+.article-list--card article:hover { box-shadow: var(--shadow-l2); transform: translateY(-2px); }
+.article-list--card article > a { display: flex; flex-direction: column; height: 100%; color: inherit; }
+.article-list--card .article-image { aspect-ratio: 16 / 9; background-color: var(--card-separator-color); }
+.article-list--card .article-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .article-list--card .article-details {
   flex: 1 1 auto;
   display: flex;
@@ -310,89 +312,662 @@
   gap: 8px;
   padding: var(--card-padding);
 }
-
-
 .article-list--card .article-title {
   margin: 0;
   font-size: 1.7rem;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--card-text-color-main);
+  text-wrap: pretty;
 }
-
 .article-list--card .article-card__summary {
   margin: 0;
   font-size: 1.4rem;
   line-height: 1.7;
   color: var(--card-text-color-secondary);
-
-  /* 4 行で省略。対応外のブラウザでは全文が出るだけで崩れない */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 .article-list--card .article-time {
   margin-top: auto;
   padding-top: 4px;
   font-size: 1.3rem;
   color: var(--card-text-color-tertiary);
 }
-
-/* 画像を持たない記事でも高さが揃うように */
-.article-list--card article:not(.has-image) .article-details {
-  padding-top: calc(var(--card-padding) + 4px);
-}
+.article-list--card article:not(.has-image) .article-details { padding-top: calc(var(--card-padding) + 4px); }
 
 /* ============================================================
-   トップページ（紹介文＋写真1枚）
+   共通パーツ（ボタン・ピル・チップ・ブロック）
+   ※ html { font-size: 62.5% } なので 1rem = 10px
    ============================================================ */
+.dvj-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
+  transition: filter .15s ease;
+}
+.dvj-button:hover { filter: brightness(1.08); color: var(--dvj-brand-ink); }
+.dvj-button svg { width: 18px; height: 18px; flex: none; }
+.dvj-button--on-brand { background: var(--dvj-brand-ink); color: var(--dvj-brand-strong); }
+.dvj-button--on-brand:hover { color: var(--dvj-brand-strong); }
+.dvj-button--on-brand-ghost {
+  background: transparent;
+  color: var(--dvj-brand-ink);
+  box-shadow: inset 0 0 0 1.5px var(--dvj-brand-ink-soft);
+}
 
-.home-intro {
-  background-color: var(--card-background);
+/* 旧ボタン（イベント個別ページ）。暗い背景でも白文字が読めるよう塗りをブランド色に */
+.dvj-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: filter .15s ease;
+}
+.dvj-btn:hover { filter: brightness(1.08); color: var(--dvj-brand-ink); }
+.dvj-btn--ghost {
+  background: transparent;
+  color: var(--accent-color);
+  box-shadow: inset 0 0 0 1px var(--card-separator-color);
+}
+.dvj-btn--ghost:hover { color: var(--accent-color); box-shadow: inset 0 0 0 1px var(--dvj-brand); }
+
+.dvj-pill {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--card-separator-color);
+  color: var(--card-text-color-secondary);
+}
+
+.dvj-block {
+  background: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--shadow-l1);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dvj-block__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.dvj-block__head .section-title { margin: 0; }
+.dvj-block__title { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--card-text-color-main); }
+.dvj-block__link { font-size: 1.3rem; font-weight: 700; color: var(--accent-color); white-space: nowrap; }
+.dvj-block__note { font-size: 1.2rem; color: var(--card-text-color-tertiary); }
+
+.dvj-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.dvj-chips__more { padding: 0 6px; }
+.dvj-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1);
+  color: var(--card-text-color-main);
+  font-size: 1.4rem;
+}
+.dvj-chip:hover { box-shadow: var(--shadow-l2); color: var(--card-text-color-main); }
+.dvj-chip__count {
+  font-size: 1.1rem;
+  color: var(--card-text-color-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+.dvj-topic {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: var(--dvj-chip-background);
+  color: var(--card-text-color-main);
+  font-size: 1.3rem;
+}
+.dvj-topic:hover { box-shadow: var(--shadow-l2); color: var(--card-text-color-main); }
+.dvj-topic__hash { color: var(--card-text-color-tertiary); }
+
+.dvj-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 1.2rem;
+  color: var(--card-text-color-secondary);
+}
+.dvj-legend > span { display: inline-flex; align-items: center; gap: 6px; }
+.dvj-legend__swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.dvj-legend__swatch--venue { background: var(--dvj-brand); }
+.dvj-legend__swatch--online { background: var(--dvj-online); }
+
+/* ============================================================
+   開催記録の年表（partials/dvj/timeline.html）
+   ============================================================ */
+.dvj-timeline__plot { display: flex; height: 132px; }
+.dvj-timeline--interactive .dvj-timeline__plot { height: 152px; }
+.dvj-timeline__year {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  border-radius: 4px 4px 0 0;
+  transition: opacity .15s ease, background-color .15s ease;
+}
+button.dvj-timeline__year { cursor: pointer; }
+button.dvj-timeline__year:disabled { cursor: default; }
+button.dvj-timeline__year:not(:disabled):hover,
+.dvj-timeline__year[aria-pressed="true"] { background: var(--dvj-chip-background); }
+.dvj-timeline[data-active] .dvj-timeline__year[aria-pressed="false"] { opacity: .35; }
+.dvj-timeline__bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 2px;
+  border-bottom: 1px solid var(--card-separator-color);
+}
+.dvj-timeline__bar {
+  display: block;
+  width: 10px;
+  max-width: 40%;
+  height: calc(8px + var(--n, 0) * 9px);
+  border-radius: 2px 2px 0 0;
+  background: var(--dvj-online);
+}
+.dvj-timeline__bar--venue { background: var(--dvj-brand); }
+.dvj-timeline__bar--empty { opacity: .55; }
+.dvj-timeline__label {
+  padding: 6px 0 2px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--card-text-color-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+.dvj-timeline__year[aria-pressed="true"] .dvj-timeline__label { color: var(--card-text-color-main); font-weight: 700; }
+
+/* ============================================================
+   トップページ（layouts/index.html）
+   ============================================================ */
+.dvj-hero {
+  background: var(--card-background);
   border-radius: var(--card-border-radius);
   box-shadow: var(--shadow-l1);
   overflow: hidden;
 }
-
-.home-intro__figure {
-  margin: 0;
-  line-height: 0;
-}
-
-.home-intro__figure img {
+.dvj-hero__figure { margin: 0; line-height: 0; }
+.dvj-hero__figure img {
   width: 100%;
   height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   display: block;
 }
-
-.home-intro__body {
+.dvj-hero__band {
+  background: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
   padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-
-.home-intro__lead {
+.dvj-hero__lead {
   margin: 0;
   font-size: 1.6rem;
-  line-height: 2;
+  line-height: 1.8;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+.dvj-hero__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.dvj-hero__record {
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+@media (min-width: 768px) {
+  .dvj-hero__figure img { aspect-ratio: 21 / 9; }
+  .dvj-hero__lead { font-size: 1.9rem; }
+}
+
+.dvj-home-section { display: flex; flex-direction: column; gap: 14px; }
+.dvj-home-section > .section-title { margin: 0; }
+
+.dvj-talks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.dvj-talk {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--shadow-l1);
+  overflow: hidden;
+  color: inherit;
+  transition: box-shadow .3s ease, transform .15s ease;
+}
+.dvj-talk:hover { box-shadow: var(--shadow-l2); transform: translateY(-2px); color: inherit; }
+.dvj-talk__thumb { position: relative; aspect-ratio: 16 / 9; background: var(--card-separator-color); }
+.dvj-talk__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dvj-talk__badge {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dvj-brand-ink);
+  background: var(--dvj-overlay);
+}
+.dvj-talk__badge svg { width: 12px; height: 12px; }
+.dvj-talk__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px 16px;
+}
+.dvj-talk__speaker { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); }
+.dvj-talk__title {
+  font-size: 1.5rem;
+  line-height: 1.55;
+  font-weight: 700;
+  color: var(--card-text-color-main);
+  text-wrap: pretty;
+}
+.dvj-talk__meta { margin-top: auto; padding-top: 4px; font-size: 1.2rem; color: var(--card-text-color-tertiary); }
+
+.dvj-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.dvj-sigma {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px 18px 22px;
+  background: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: inset 3px 0 0 var(--dvj-brand), var(--shadow-l1);
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 160ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.dvj-sigma:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+.dvj-sigma:active { transform: scale(0.98); }
+.dvj-sigma__text { display: flex; flex-direction: column; gap: 6px; }
+.dvj-sigma__title {
+  font-size: 1.7rem;
+  line-height: 1.4;
+  font-weight: 700;
   color: var(--card-text-color-main);
 }
-
+.dvj-sigma__lead {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: var(--card-text-color-secondary);
+  text-wrap: pretty;
+}
+.dvj-sigma__go {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
+  font-size: 1.4rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dvj-sigma__go::after { content: "→"; margin-left: 8px; }
+@media (hover: hover) and (pointer: fine) {
+  .dvj-sigma:hover {
+    box-shadow: inset 3px 0 0 var(--dvj-brand), var(--shadow-l2);
+    transform: translateY(-2px);
+    color: inherit;
+  }
+  .dvj-sigma:hover:active { transform: translateY(-2px) scale(0.98); }
+}
 @media (min-width: 768px) {
-  .home-intro__lead { font-size: 1.7rem; }
+  .dvj-sigma {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 22px 20px 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dvj-sigma,
+  .dvj-sigma:hover,
+  .dvj-sigma:active { transition: none; transform: none; }
 }
 
-/* イベントの会場表示（format の隣に置く） */
-.dvj-event__venue {
-  font-size: .8rem;
+/* ============================================================
+   イベント一覧（layouts/events/list.html）
+   ============================================================ */
+.dvj-events { display: flex; flex-direction: column; gap: var(--section-separation); }
+.dvj-page-head { display: flex; flex-direction: column; gap: 10px; }
+.dvj-page-head__title { margin: 0; font-size: 2.4rem; line-height: 1.3; color: var(--card-text-color-main); }
+.dvj-page-head__lead {
+  margin: 0;
+  max-width: 36em;
+  font-size: 1.5rem;
+  line-height: 1.85;
+  color: var(--card-text-color-secondary);
+  text-wrap: pretty;
+}
+@media (min-width: 768px) { .dvj-page-head__title { font-size: 2.8rem; } }
+
+/* Stack は body に文字色を持たないため、カードの外に置くテキストは明示する */
+.dvj-events-intro,
+.dvj-event__intro { color: var(--body-text-color); }
+
+.dvj-filter-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.dvj-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.dvj-filter {
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--card-separator-color);
+  background: transparent;
+  color: var(--card-text-color-main);
+  font: inherit;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.dvj-filter[aria-pressed="true"] {
+  background: var(--dvj-brand);
+  border-color: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
+  font-weight: 700;
+}
+
+.dvj-event-group { display: flex; flex-direction: column; gap: 14px; }
+.dvj-event-group > .section-title { margin: 0; }
+.dvj-count { font-size: 1.3rem; font-weight: 400; color: var(--card-text-color-tertiary); }
+.dvj-ev-list { display: flex; flex-direction: column; gap: 14px; }
+
+.dvj-ev {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: var(--card-border-radius);
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1);
+  color: var(--card-text-color-main);
+  transition: box-shadow .2s ease;
+}
+.dvj-ev:hover { box-shadow: var(--shadow-l2); color: var(--card-text-color-main); }
+.dvj-ev[hidden] { display: none; }
+.dvj-ev--upcoming { box-shadow: 0 0 0 2px var(--dvj-brand); }
+.dvj-ev__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.dvj-ev__label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
+}
+.dvj-ev__date {
+  margin-right: 4px;
+  font-family: "Lato", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-color);
+}
+.dvj-ev__title { font-size: 1.7rem; line-height: 1.55; font-weight: 700; text-wrap: pretty; }
+.dvj-ev__thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.dvj-ev__thumbs img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  background: var(--card-separator-color);
+}
+.dvj-ev__thumbs img:nth-child(n + 4) { display: none; }
+.dvj-ev__speakers { font-size: 1.3rem; line-height: 1.7; color: var(--card-text-color-secondary); text-wrap: pretty; }
+.dvj-ev__foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--card-separator-color);
+  font-size: 1.2rem;
   color: var(--card-text-color-tertiary);
+}
+.dvj-ev__count { font-weight: 700; color: var(--card-text-color-main); }
+.dvj-ev__count--none { font-weight: 400; color: var(--card-text-color-tertiary); }
+.dvj-ev__media { display: inline-flex; align-items: center; gap: 5px; }
+.dvj-ev__media svg { width: 14px; height: 14px; }
+.dvj-ev__more { margin-left: auto; font-weight: 700; color: var(--accent-color); }
+@media (min-width: 768px) {
+  .dvj-ev { padding: 20px 22px; }
+  .dvj-ev__thumbs { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .dvj-ev__thumbs img:nth-child(n + 4) { display: block; }
+}
+
+.dvj-empty {
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--card-text-color-tertiary);
+  border: 1px dashed var(--card-separator-color);
+  border-radius: var(--card-border-radius);
+}
+
+/* 右サイドバー「コミュニティに参加する」（partials/widget/community.html） */
+.dvj-community .widget-title { margin-bottom: 12px; }
+.dvj-community__list { display: flex; flex-direction: column; gap: 10px; }
+.dvj-community__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--card-border-radius);
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1);
+  color: var(--card-text-color-main);
+}
+.dvj-community__item:hover { box-shadow: var(--shadow-l2); color: var(--card-text-color-main); }
+.dvj-community__item svg { flex: none; width: 22px; height: 22px; color: var(--accent-color); stroke: currentColor; }
+.dvj-community__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.dvj-community__name { font-size: 1.4rem; font-weight: 700; }
+.dvj-community__desc { font-size: 1.2rem; line-height: 1.5; color: var(--card-text-color-tertiary); }
+
+/* ============================================================
+   イベント個別ページ（layouts/events/single.html）
+   rem の値を 1rem = 10px 前提に修正（旧: .85rem → 8.5px など）
+   ============================================================ */
+.dvj-event { display: flex; flex-direction: column; gap: 18px; }
+.dvj-event__header {
+  color: var(--card-text-color-main);
+  padding: 24px;
+  border-radius: var(--card-border-radius);
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1);
+}
+.dvj-event__date {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  color: var(--accent-color);
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.dvj-event__format,
+.dvj-event__venue {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--card-text-color-secondary);
   border: 1px solid var(--card-separator-color);
   border-radius: 999px;
-  padding: 2px 10px;
+  padding: 4px 10px;
+}
+.dvj-event__title { margin: 0; font-size: 2.4rem; line-height: 1.4; }
+.dvj-event__links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.dvj-sessions { display: flex; flex-direction: column; gap: 14px; }
+.dvj-session {
+  color: var(--card-text-color-main);
+  display: flex;
+  gap: 16px;
+  padding: 14px;
+  border-radius: var(--card-border-radius);
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1);
+}
+.dvj-session__thumb { flex: 0 0 200px; max-width: 40%; }
+.dvj-session__thumb img { width: 100%; height: auto; border-radius: 6px; display: block; }
+.dvj-session__title { margin: 0 0 4px; font-size: 1.7rem; line-height: 1.5; }
+.dvj-session__speaker { color: var(--card-text-color-secondary); margin: 0 0 8px; font-size: 1.4rem; }
+.dvj-session__links { display: flex; flex-wrap: wrap; gap: 16px; margin: 0; font-size: 1.4rem; }
+.dvj-session__links a { font-weight: 700; }
+
+/* 記事末尾の CTA ブロック */
+.dvj-cta-block {
+  margin-top: 28px;
+  padding: 24px;
+  border-radius: var(--card-border-radius);
+  background: var(--card-background);
+  box-shadow: var(--shadow-l1);
+  color: var(--card-text-color-main);
+  text-align: center;
+}
+.dvj-cta-block__label { color: var(--accent-color); font-weight: 700; font-size: 1.2rem; margin: 0 0 6px; }
+.dvj-cta-block__title { font-size: 2rem; font-weight: 700; margin: 0 0 4px; }
+.dvj-cta-block__meta { color: var(--card-text-color-secondary); margin: 0 0 16px; }
+.dvj-cta-block__btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 28px;
+  border-radius: 8px;
+  background: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
+  font-weight: 700;
+}
+.dvj-cta-block__btn:hover { color: var(--dvj-brand-ink); filter: brightness(1.08); }
+.dvj-cta-block__sub { margin: 14px 0 0; font-size: 1.4rem; }
+
+/* 全ページ共通の下部バー */
+.dvj-cta-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  background: var(--card-background);
+  box-shadow: 0 -1px 0 var(--card-separator-color);
+}
+.dvj-cta-bar__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+.dvj-cta-bar__label {
+  flex: 0 0 auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dvj-brand-ink);
+  background: var(--dvj-brand);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+.dvj-cta-bar__title {
+  flex: 1 1 auto;
+  font-weight: 700;
+  color: var(--card-text-color-main);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dvj-cta-bar__date { margin-left: 10px; color: var(--card-text-color-tertiary); font-weight: 400; }
+.dvj-cta-bar__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: var(--dvj-brand);
+  color: var(--dvj-brand-ink);
+  font-weight: 700;
+}
+.dvj-cta-bar__btn:hover { color: var(--dvj-brand-ink); }
+.dvj-cta-bar__close {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--card-text-color-tertiary);
 }
 
-/* Stack は body に文字色を持たないため、カードの外に置くテキストは
-   --body-text-color を明示する（テーマの .section-title と同じ扱い） */
-.dvj-events-intro,
-.dvj-event__intro {
-  color: var(--body-text-color);
+@media (max-width: 640px) {
+  .dvj-cta-bar__label,
+  .dvj-cta-bar__date { display: none; }
+  .dvj-session { flex-direction: column; }
+  .dvj-session__thumb { flex-basis: auto; max-width: 100%; }
 }

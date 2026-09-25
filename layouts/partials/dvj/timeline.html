@@ -1,0 +1,54 @@
+{{- /*
+    開催記録の年表。1年＝1列、1イベント＝1本の棒。
+      棒の高さ … sessions の数（記録のある講演数）
+      棒の色   … format に「オンライン」を含めば online、それ以外は venue
+    引数: (dict "interactive" true) で各年をボタンとして描画する
+          （layouts/events/list.html の絞り込み用。JS はそちらに置く）
+*/ -}}
+{{- $interactive := .interactive | default false -}}
+{{- $events := where site.RegularPages "Section" "events" -}}
+{{- $first := 9999 -}}
+{{- $last := 0 -}}
+{{- range $events -}}
+    {{- $y := (time.AsTime (.Params.eventDate | default .Date)).Year -}}
+    {{- if lt $y $first }}{{ $first = $y }}{{ end -}}
+    {{- if gt $y $last }}{{ $last = $y }}{{ end -}}
+{{- end -}}
+{{- if $events -}}
+<div class="dvj-timeline{{ if $interactive }} dvj-timeline--interactive{{ end }}">
+    <div class="dvj-timeline__plot">
+        {{- range seq $first $last -}}
+            {{- $year := . -}}
+            {{- $list := slice -}}
+            {{- range $events -}}
+                {{- if eq (time.AsTime (.Params.eventDate | default .Date)).Year $year -}}
+                    {{- $list = $list | append . -}}
+                {{- end -}}
+            {{- end -}}
+            {{- $tip := printf "%d年：%d回" $year (len $list) -}}
+            {{- if $interactive -}}
+                <button type="button" class="dvj-timeline__year" data-year="{{ $year }}" aria-pressed="false" title="{{ $tip }}"{{ if not $list }} disabled{{ end }}>
+            {{- else -}}
+                <div class="dvj-timeline__year" title="{{ $tip }}">
+            {{- end -}}
+                <span class="dvj-timeline__bars">
+                    {{- range sort $list "Params.eventDate" "asc" -}}
+                        {{- $n := 0 -}}
+                        {{- with .Params.sessions }}{{ $n = len . }}{{ end -}}
+                        {{- $online := in (string (.Params.format | default "")) "オンライン" -}}
+                        {{- $d := time.AsTime (.Params.eventDate | default .Date) -}}
+                        <span class="dvj-timeline__bar dvj-timeline__bar--{{ cond $online "online" "venue" }}{{ if eq $n 0 }} dvj-timeline__bar--empty{{ end }}"
+                            style="--n: {{ $n }}"
+                            title="{{ $d.Format "2006.01.02" }} {{ .Title }}（{{ .Params.format }}{{ if $n }}・講演{{ $n }}本{{ end }}）"></span>
+                    {{- end -}}
+                </span>
+                <span class="dvj-timeline__label">'{{ substr (string $year) 2 }}</span>
+            {{- if $interactive -}}
+                </button>
+            {{- else -}}
+                </div>
+            {{- end -}}
+        {{- end -}}
+    </div>
+</div>
+{{- end -}}

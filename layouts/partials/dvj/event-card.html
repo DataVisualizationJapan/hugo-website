@@ -1,0 +1,60 @@
+{{- /*
+    イベント一覧のカード（1イベント分）。引数はイベントのページ。
+    セッションの書き起こし記事は slug で引く（permalinks が /:slug/ のため。CLAUDE.md 参照）。
+    data-year / data-format は events/list.html の絞り込み JS が使う。
+*/ -}}
+{{- $d := time.AsTime (.Params.eventDate | default .Date) -}}
+{{- $sessions := slice -}}
+{{- with .Params.sessions }}{{ $sessions = . }}{{ end -}}
+{{- $online := in (string (.Params.format | default "")) "オンライン" -}}
+{{- $upcoming := ge $d now -}}
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $speakers := slice -}}
+{{- $hasVideo := false -}}
+{{- range $sessions -}}
+    {{- with .speaker }}{{ $speakers = $speakers | append . }}{{ end -}}
+    {{- if .videoId }}{{ $hasVideo = true }}{{ end -}}
+{{- end -}}
+<a class="dvj-ev{{ if $upcoming }} dvj-ev--upcoming{{ end }}" href="{{ .RelPermalink }}" data-year="{{ $d.Year }}" data-format="{{ cond $online "online" "venue" }}">
+    <div class="dvj-ev__head">
+        {{ if $upcoming }}<span class="dvj-ev__label">開催予定</span>{{ end }}
+        <time class="dvj-ev__date" datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2006.01.02" }}</time>
+        {{ with .Params.format }}<span class="dvj-pill">{{ . }}</span>{{ end }}
+        {{ with .Params.venue }}<span class="dvj-pill">{{ . }}</span>{{ end }}
+    </div>
+
+    <span class="dvj-ev__title">{{ .Title }}</span>
+
+    {{- $thumbs := slice -}}
+    {{- range $sessions -}}
+        {{- with .post -}}
+            {{- range first 1 (where $posts "Params.slug" .) -}}
+                {{- with .Resources.GetMatch (.Params.image | default "cover.*") -}}
+                    {{- $thumbs = $thumbs | append (.Fill "320x180 webp q80") -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+    {{ with first 5 $thumbs }}
+        <div class="dvj-ev__thumbs">
+            {{ range . }}<img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" alt="">{{ end }}
+        </div>
+    {{ end }}
+
+    {{ with $speakers }}
+        <span class="dvj-ev__speakers">
+            {{- delimit (first 5 .) "・" -}}
+            {{- if gt (len .) 5 }} ほか{{ sub (len .) 5 }}名{{ end -}}
+        </span>
+    {{ end }}
+
+    <span class="dvj-ev__foot">
+        {{ if $sessions }}
+            <span class="dvj-ev__count">講演 {{ len $sessions }}本</span>
+        {{ else }}
+            <span class="dvj-ev__count dvj-ev__count--none">講演記録なし</span>
+        {{ end }}
+        {{ if $hasVideo }}<span class="dvj-ev__media">{{ partial "helper/icon" "brand-youtube" }}動画・書き起こし</span>{{ end }}
+        <span class="dvj-ev__more">詳細 →</span>
+    </span>
+</a>

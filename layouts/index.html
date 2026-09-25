@@ -1,7 +1,11 @@
 {{ define "main" }}
     {{/*
-        トップページ。コミュニティの紹介文と写真1枚のみ。
-        （カテゴリー一覧・最新記事一覧は 2026-08 に廃止）
+        トップページ（2026-09 改訂・案D）
+          1. 写真＋紹介文（マゼンタの帯）＋開催記録の年表
+          2. Sigma Awards エントリー一覧へのカード
+          3. 新着の講演（posts の新しい順に4件）
+          4. 登壇者から探す（speakers taxonomy の多い順に8名）
+          5. トピックから探す（tags の多い順に12件）
 
         写真は assets/img/ に置く。ファイル名は home.jpg / home.png / home.webp の
         いずれか。置かれていなければ写真のブロックごと描画しない（ビルドは通る）。
@@ -14,10 +18,14 @@
             {{- end -}}
         {{- end -}}
     {{- end -}}
+    {{- $youtube := "" -}}
+    {{- range site.Menus.social -}}
+        {{- if eq .Identifier "youtube" }}{{ $youtube = .URL }}{{ end -}}
+    {{- end -}}
 
-    <section class="home-intro">
+    <section class="dvj-hero">
         {{- with $hero }}
-            <figure class="home-intro__figure">
+            <figure class="dvj-hero__figure">
                 {{- if ne (path.Ext .RelPermalink) ".svg" -}}
                     {{- $w := .Resize "960x webp q85" -}}
                     {{- $w2 := .Resize "1920x webp q85" -}}
@@ -32,14 +40,108 @@
             </figure>
         {{- end }}
 
-        <div class="home-intro__body">
-            <p class="home-intro__lead">データ・ビジュアライゼーションにまつわる実践的なノウハウやツールなどを共有していくコミュニティです。定期的に勉強会やミートアップを開催しています。</p>
+        <div class="dvj-hero__band">
+            <p class="dvj-hero__lead">データ・ビジュアライゼーションにまつわる実践的なノウハウやツールなどを共有していくコミュニティです。定期的に勉強会やミートアップを開催しています。</p>
+            <div class="dvj-hero__actions">
+                <a class="dvj-button dvj-button--on-brand" href="{{ "posts/" | relURL }}">講演アーカイブを見る</a>
+                {{ with $youtube }}
+                    <a class="dvj-button dvj-button--on-brand-ghost" href="{{ . }}" target="_blank" rel="noopener">{{ partial "helper/icon" "brand-youtube" }}YouTube</a>
+                {{ end }}
+            </div>
+        </div>
+
+        <div class="dvj-hero__record">
+            <div class="dvj-block__head">
+                <h2 class="dvj-block__title">{{ with first 1 (sort (where site.RegularPages "Section" "events") "Params.eventDate" "asc") }}{{ range . }}{{ (time.AsTime (.Params.eventDate | default .Date)).Year }}{{ end }}{{ end }}年からの開催記録</h2>
+                <a class="dvj-block__link" href="{{ "events/" | relURL }}">イベント一覧 →</a>
+            </div>
+            {{ partial "dvj/timeline.html" (dict "interactive" false) }}
+            <div class="dvj-legend">
+                <span><i class="dvj-legend__swatch dvj-legend__swatch--venue"></i>会場</span>
+                <span><i class="dvj-legend__swatch dvj-legend__swatch--online"></i>オンライン</span>
+                <span>高さ＝記録のある講演数</span>
+            </div>
         </div>
     </section>
+
+    <section class="dvj-home-section">
+        <a class="dvj-sigma" href="https://sigma-awards.data-visualization.jp/" target="_blank" rel="noopener">
+            <span class="dvj-sigma__text">
+                <span class="dvj-sigma__title">Sigma Awards エントリー一覧</span>
+                <span class="dvj-sigma__lead">GIJN 主催の国際データジャーナリズム賞に応募された作品を一覧できます。</span>
+            </span>
+            <span class="dvj-sigma__go">一覧を見る<span class="dvj-sr">（新しいタブで開きます）</span></span>
+        </a>
+    </section>
+
+    {{- $posts := first 4 (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+    {{ with $posts }}
+    <section class="dvj-home-section">
+        <div class="dvj-block__head">
+            <h2 class="section-title">新着の講演</h2>
+            <a class="dvj-block__link" href="{{ "posts/" | relURL }}">すべての記事 →</a>
+        </div>
+        <div class="dvj-talks">
+            {{ range . }}
+                {{/* タイトルは「登壇者名／講演タイトル」。登壇者とタイトルを分けて表示する */}}
+                {{- $parts := split .Title "／" -}}
+                {{- $speaker := "" -}}
+                {{- $title := .Title -}}
+                {{- if gt (len $parts) 1 -}}
+                    {{- $speaker = index $parts 0 -}}
+                    {{- $title = delimit (after 1 $parts) "／" -}}
+                {{- end -}}
+                {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
+                <a class="dvj-talk" href="{{ .RelPermalink }}">
+                    <div class="dvj-talk__thumb">
+                        {{ with $image.resource }}
+                            {{ $t := .Fill "480x270 webp q80" }}
+                            <img src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}" loading="lazy" alt="">
+                        {{ else }}
+                            {{ if $image.exists }}<img src="{{ $image.permalink }}" loading="lazy" alt="">{{ end }}
+                        {{ end }}
+                        {{ with .Params.videoId }}<span class="dvj-talk__badge">{{ partial "helper/icon" "brand-youtube" }}動画＋書き起こし</span>{{ end }}
+                    </div>
+                    <div class="dvj-talk__body">
+                        {{ with $speaker }}<span class="dvj-talk__speaker">{{ . }}</span>{{ end }}
+                        <span class="dvj-talk__title">{{ $title }}</span>
+                        <span class="dvj-talk__meta">
+                            {{- with .Params.event }}{{ with site.GetPage (printf "/events/%s" .) }}{{ .Title }} · {{ end }}{{ end -}}
+                            {{- .Date.Format "2006.01.02" -}}
+                        </span>
+                    </div>
+                </a>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with site.Taxonomies.speakers }}
+    <section class="dvj-home-section">
+        <h2 class="section-title">登壇者から探す</h2>
+        <div class="dvj-chips">
+            {{ range first 8 .ByCount }}
+                <a class="dvj-chip" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}<span class="dvj-chip__count">{{ .Count }}</span></a>
+            {{ end }}
+            <a class="dvj-block__link dvj-chips__more" href="{{ "speakers/" | relURL }}">登壇者一覧 →</a>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with site.Taxonomies.tags }}
+    <section class="dvj-home-section">
+        <h2 class="section-title">トピックから探す</h2>
+        <div class="dvj-chips">
+            {{ range first 12 .ByCount }}
+                <a class="dvj-topic" href="{{ .Page.RelPermalink }}"><span class="dvj-topic__hash">#</span>{{ .Page.Title }}<span class="dvj-chip__count">{{ .Count }}</span></a>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
 
     {{ partialCached "footer/footer" . }}
 {{ end }}
 
 {{ define "right-sidebar" }}
-    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "dvj") }}
 {{ end }}
