@@ -20,12 +20,15 @@ speakerdeck = ""
 # サムネイル（このページバンドル内の画像。無ければこの行を削除）
 # image = "images/cover.png"
 
+# 当日の写真は、このページバンドル内の photos/ に置くと「当日の様子」に並ぶ（ファイル名順）
+
 # セッション（動画・書き起こし記事への橋渡し）
 [[sessions]]
   title = ""
   speaker = ""
   videoId = ""   # YouTube 動画ID
   post = ""      # 対応する書き起こし記事の slug（任意）
+  abstract = ""  # 講演の概要（任意）
 
 [[sessions]]
   title = ""

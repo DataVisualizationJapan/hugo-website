@@ -24,10 +24,32 @@
         </div>
     {{ end }}
 
+    {{/* 当日の写真：ページバンドルの photos/ に置いた画像をファイル名順に並べる */}}
+    {{- $photos := slice -}}
+    {{- range sort (.Resources.Match "photos/*") "Name" -}}
+        {{- if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") -}}
+            {{- $photos = $photos | append . -}}
+        {{- end -}}
+    {{- end -}}
+    {{ with $photos }}
+        <section class="dvj-photos" data-dvj-photos>
+            <h2 class="section-title">当日の様子</h2>
+            <div class="dvj-photos__grid">
+                {{ range $i, $p := . }}
+                    {{- $full := $p.Fit "1600x1600" -}}
+                    {{- $thumb := $p.Fill "600x400 Center" -}}
+                    <a class="dvj-photos__item" href="{{ $full.RelPermalink }}" data-w="{{ $full.Width }}" data-h="{{ $full.Height }}">
+                        <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="当日の様子 {{ add $i 1 }}" loading="lazy">
+                    </a>
+                {{ end }}
+            </div>
+        </section>
+    {{ end }}
+
     {{ with .Params.sessions }}
         <section class="dvj-sessions">
             <h2 class="section-title">セッション</h2>
-            {{ range . }}
+            {{ range $s := . }}
                 <article class="dvj-session">
                     {{ with .videoId }}
                         <a class="dvj-session__thumb" href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener" aria-label="動画を見る">
@@ -37,10 +59,13 @@
                     <div class="dvj-session__body">
                         <h3 class="dvj-session__title">{{ .title }}</h3>
                         {{ with .speaker }}<p class="dvj-session__speaker">{{ . }}</p>{{ end }}
+                        {{ with .abstract }}<p class="dvj-session__abstract">{{ . | markdownify }}</p>{{ end }}
+                        {{ if or .post .videoId }}
                         <p class="dvj-session__links">
-                            {{ with .post }}<a href="/{{ . }}/">書き起こしを読む →</a>{{ end }}
+                            {{ with .post }}<a href="/{{ . }}/">{{ if $s.videoId }}書き起こしを読む{{ else }}講演ページを見る{{ end }} →</a>{{ end }}
                             {{ with .videoId }}<a href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener">動画を見る →</a>{{ end }}
                         </p>
+                        {{ end }}
                     </div>
                 </article>
             {{ end }}
@@ -49,4 +74,31 @@
 
     {{ partialCached "footer/footer" . }}
 </article>
+
+{{ if $photos }}
+    {{ partialCached "article/components/photoswipe" . }}
+    <script>
+    window.addEventListener('load', function () {
+        var root = document.querySelector('[data-dvj-photos]');
+        var pswp = document.querySelector('.pswp');
+        if (!root || !pswp || !window.PhotoSwipe) return;
+        var links = Array.prototype.slice.call(root.querySelectorAll('.dvj-photos__item'));
+        var items = links.map(function (a) {
+            return { src: a.href, w: +a.dataset.w, h: +a.dataset.h };
+        });
+        links.forEach(function (a, i) {
+            a.addEventListener('click', function (e) {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+                e.preventDefault();
+                new PhotoSwipe(pswp, PhotoSwipeUI_Default, items, {
+                    index: i,
+                    history: false,
+                    shareEl: false,
+                    showHideOpacity: true
+                }).init();
+            });
+        });
+    });
+    </script>
+{{ end }}
 {{ end }}

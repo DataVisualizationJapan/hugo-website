@@ -862,6 +862,45 @@ button.dvj-timeline__year:not(:disabled):hover,
 .dvj-event__title { margin: 0; font-size: 2.4rem; line-height: 1.4; }
 .dvj-event__links { display: flex; flex-wrap: wrap; gap: 12px; }
 
+/* Speaker Deck の埋め込み（layouts/shortcodes/speakerdeck.html） */
+.dvj-speakerdeck { margin: 1.5em 0; }
+.dvj-speakerdeck iframe { display: block; width: 100%; height: auto; border: 0; border-radius: 6px; }
+
+.dvj-photos { display: flex; flex-direction: column; gap: 14px; }
+.dvj-photos > .section-title { margin: 0; }
+.dvj-photos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+.dvj-photos__item {
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--card-background);
+  transition: transform 160ms ease-out;
+}
+.dvj-photos__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: filter 160ms ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  .dvj-photos__item:hover img { filter: brightness(1.08); }
+}
+.dvj-photos__item:active { transform: scale(0.98); }
+.dvj-photos__item:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .dvj-photos__item:active { transform: none; }
+}
+@media (max-width: 640px) {
+  .dvj-photos__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 .dvj-sessions { display: flex; flex-direction: column; gap: 14px; }
 .dvj-session {
   color: var(--card-text-color-main);
@@ -876,6 +915,8 @@ button.dvj-timeline__year:not(:disabled):hover,
 .dvj-session__thumb img { width: 100%; height: auto; border-radius: 6px; display: block; }
 .dvj-session__title { margin: 0 0 4px; font-size: 1.7rem; line-height: 1.5; }
 .dvj-session__speaker { color: var(--card-text-color-secondary); margin: 0 0 8px; font-size: 1.4rem; }
+.dvj-session__abstract { margin: 0 0 8px; font-size: 1.4rem; line-height: 1.8; color: var(--card-text-color-secondary); }
+.dvj-session__abstract:last-child { margin-bottom: 0; }
 .dvj-session__links { display: flex; flex-wrap: wrap; gap: 16px; margin: 0; font-size: 1.4rem; }
 .dvj-session__links a { font-weight: 700; }
 
