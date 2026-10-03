@@ -28,6 +28,8 @@ D3.js ver.4がリリースされて３ヶ月。メジャーバージョンアッ
 
 ## スライド
 
+{{< slideshare key="vLCME4gmRJe63u" >}}
+
 [SlideShare で見る](https://www.slideshare.net/xxshimizuxx/d3-ver4)
 
 ## 登壇者プロフィール（告知時点）

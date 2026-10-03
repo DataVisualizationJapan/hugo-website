@@ -32,6 +32,8 @@ summary = "羽田空港のJAL機炎上事故を、日経はどう1週間で報�
 
 {{< youtube IilIrdiAQls >}}
 
+{{< slideshare key="NvLzJuYDYKSCVN" ratio="16 / 9" >}}
+
 [スライド](https://www.slideshare.net/slideshow/data-visualization-japan-2025/284649651)
 
 日本経済新聞の久能と申します。本日は「世界のメディアは航空機事故をどのようにビジュアルで報道しているのか」というテーマで、弊社の事例なども含めてご報告させていただきます。

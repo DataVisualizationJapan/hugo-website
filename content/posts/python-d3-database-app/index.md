@@ -27,6 +27,8 @@ D3.jsで学ぶデータビジュアライゼーション（2016年11月14日開�
 
 ## スライド
 
+{{< figshare id="4231847" >}}
+
 [figshare で見る](https://figshare.com/articles/Python_D3_js__________/4231847)
 
 ## 登壇者プロフィール（告知時点）

@@ -45,6 +45,30 @@ connpass = "https://data-visualization-japan.connpass.com/event/47246/"
   title = "LT：ナビタイムデータで視るニッポンの交通・観光事情"
   speaker = "kohei-ota"
   abstract = "ナビタイムジャパンでは、GPSや経路検索等のビッグデータを使い、交通・観光の分析を行っています。それらのデータを用いた、自動車の渋滞対策、鉄道の混雑予測、観光施設の集客、訪日外国人の回遊などの分析事例を、地図上でグラフィカルにご紹介します。"
+
+[[sessions]]
+  title = "LT：slack bot(pickupon)による動的ビジュアライゼーションの民主化"
+  speaker = "Yoichi Obata"
 +++
 
 2016年12月25日に、ヤフー株式会社のコミュニティスペース LODGE で開催した年次イベントです。報道やネット企業などの作り手によるトークとライトニングトークのミニ・カンファレンス形式で行い、connpass では86名が参加登録しました。書き起こし記事は公開していません。当日の内容は下記の告知ページをご覧ください。
+
+## スライド
+
+### 池宮 伸次さん／熊本地震の検索データをビジュアライズのアプローチで分析した話
+
+{{< speakerdeck id="0ea2d89652f04a00ade2c975fce025cb" ratio="16 / 9" >}}
+
+[Speaker Deck で見る](https://speakerdeck.com/datavisualizationjapan/xiong-ben-di-zhen-falsejian-suo-tetawo-hisiyuaraisufalseahurotitefen-xi-sitahua-yahuzhu-shi-hui-she)
+
+### 鎌田 健一郎さん／２０代と学生がユーザーの３割。米大統領選報道の裏側
+
+{{< speakerdeck id="9e5e952fbec04875afd97a70d2041411" >}}
+
+[Speaker Deck で見る](https://speakerdeck.com/datavisualizationjapan/20dai-toxue-sheng-kayusafalse3ge-mi-da-tong-ling-xuan-bao-dao-falseli-ce-ri-ben-jing-ji-xin-wen-she)
+
+### LT：Yoichi Obata さん／slack bot(pickupon)による動的ビジュアライゼーションの民主化
+
+{{< slideshare key="FDpbi8UfJyqZ0g" >}}
+
+[SlideShare で見る](https://www.slideshare.net/slideshow/slack-botpickupon/70443662)

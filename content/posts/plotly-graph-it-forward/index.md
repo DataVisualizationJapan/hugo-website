@@ -28,4 +28,6 @@ Data Visualization Japan meetup #1（2014年9月16日開催）における、五
 
 ## スライド
 
+{{< slideshare key="bND2o5kgM5YMUu" >}}
+
 [SlideShare で見る](https://www.slideshare.net/slideshow/graph-it-forward-by-using-plotly-39144266/39144266)

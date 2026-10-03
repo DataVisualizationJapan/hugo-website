@@ -863,8 +863,8 @@ button.dvj-timeline__year:not(:disabled):hover,
 .dvj-event__links { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* Speaker Deck の埋め込み（layouts/shortcodes/speakerdeck.html） */
-.dvj-speakerdeck { margin: 1.5em 0; }
-.dvj-speakerdeck iframe { display: block; width: 100%; height: auto; border: 0; border-radius: 6px; }
+.dvj-slides { margin: 1.5em 0; }
+.dvj-slides iframe { display: block; width: 100%; height: auto; border: 0; border-radius: 6px; }
 
 .dvj-photos { display: flex; flex-direction: column; gap: 14px; }
 .dvj-photos > .section-title { margin: 0; }

@@ -1,0 +1,7 @@
+{{- /*
+    figshare の埋め込み。id は記事 URL（https://figshare.com/articles/<種別>/<タイトル>/<id>）末尾の数値。
+    使い方: {{< figshare id="..." >}}
+*/ -}}
+<div class="dvj-slides">
+    <iframe src="https://widgets.figshare.com/articles/{{ .Get "id" }}/embed?show_title=1" title="{{ .Page.Title }} のスライド" style="aspect-ratio: {{ .Get "ratio" | default "4 / 3" | safeCSS }}" loading="lazy" allowfullscreen></iframe>
+</div>

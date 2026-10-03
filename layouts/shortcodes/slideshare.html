@@ -1,0 +1,8 @@
+{{- /*
+    SlideShare の埋め込み。key はスライドページの HTML に含まれる embed_code/key/<key> の値で、
+    スライド URL の数値 ID ではない。
+    使い方: {{< slideshare key="..." >}}  16:9 のスライドは ratio="16 / 9" を足す。
+*/ -}}
+<div class="dvj-slides">
+    <iframe src="https://www.slideshare.net/slideshow/embed_code/key/{{ .Get "key" }}" title="{{ .Page.Title }} のスライド" style="aspect-ratio: {{ .Get "ratio" | default "4 / 3" | safeCSS }}" loading="lazy" allowfullscreen></iframe>
+</div>

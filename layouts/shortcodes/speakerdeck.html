@@ -3,6 +3,6 @@
     player URL 末尾の値で、スライドページの URL の slug ではない。
     使い方: {{< speakerdeck id="..." >}}  16:9 のスライドは ratio="16 / 9" を足す。
 */ -}}
-<div class="dvj-speakerdeck">
+<div class="dvj-slides">
     <iframe src="https://speakerdeck.com/player/{{ .Get "id" }}" title="{{ .Page.Title }} のスライド" style="aspect-ratio: {{ .Get "ratio" | default "4 / 3" | safeCSS }}" loading="lazy" allowfullscreen></iframe>
 </div>

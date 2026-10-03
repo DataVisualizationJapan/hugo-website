@@ -24,4 +24,6 @@ doorkeeper = "https://data-visualization-japan.doorkeeper.jp/events/22352"
 
 ## スライド
 
+{{< slideshare key="ethHdYtqniIOpB" >}}
+
 [SlideShare で見る](https://www.slideshare.net/datavizjapan/dvj-oih)
