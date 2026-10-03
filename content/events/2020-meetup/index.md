@@ -1,9 +1,10 @@
 +++
 title = "Data Visualization Japan Meetup 2020"
 date = "2020-12-28"
-eventDate = "2020-12-28T00:00:00+09:00"
+eventDate = "2020-12-28T13:30:00+09:00"
 aliases = ["/categories/2020/"]
 peatix = "https://peatix.com/event/1756920"
+connpass = "https://data-visualization-japan.connpass.com/event/199912/"
 format = "オンライン"
 
 [[sessions]]
@@ -67,6 +68,16 @@ format = "オンライン"
   speaker = "有本 昂平"
   videoId = "Lu2Z3beiewg"
   post = "corporate-bigdata-viz"
+
+[[sessions]]
+  title = "新聞社におけるデータ、機械学習、ビジュアライゼーション"
+  speaker = "浦川 通"
+  abstract = "メディア企業における自然言語処理技術を用いたプロジェクトの実践として、架空の記事タイトルおよび本文をGPT-2言語モデルで生成した「#この記事は実在しません」をはじめとした言語モデル応用事例と、朝日新聞社の保有するコロナ関連記事からキーワードを抽出し、極性判定、記事の位置情報推定を行った上で地図上にプロットした「#COVID_19WordMap」について紹介する。"
+
+[[sessions]]
+  title = "表現伝達と課題探索の交差点、コミュニケーションとしてのデータ可視化"
+  speaker = "矢崎 裕一"
+  abstract = "データ可視化には、コンテンツの消費方法として、作る人の指定通りに進む「表現伝達」型と、見る人が自由に進み方を選べる「課題探索」型に分類できます。ここでは「表現伝達」型に注目しながら、如何に見る人へ届けることができるか、その手法を事例から提案します。"
 +++
 
 2020年12月28・29日に開催したオンライン・イベントです。当日の講演の一部を、書き起こし記事として公開しています。
