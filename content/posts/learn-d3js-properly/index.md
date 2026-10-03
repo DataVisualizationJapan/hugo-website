@@ -11,6 +11,7 @@ event = "2014-meetup"
 categories = ["meetup"]
 tags = ["D3.js"]
 summary = "D3.js を思い通りに使いこなすには、D3.js 以外の知識も必要になる。そのために必要な知識と、適切なリファレンスを紹介したライトニングトーク。"
+image = "cover.jpg"
 +++
 
 Data Visualization Japan meetup #1（2014年9月16日開催）における、小副川 健さん（富士通株式会社／Data Visualization Japan）のライトニングトークです。

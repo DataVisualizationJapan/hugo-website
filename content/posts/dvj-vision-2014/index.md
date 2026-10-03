@@ -11,6 +11,7 @@ event = "2014-meetup"
 categories = ["meetup"]
 tags = ["可視化の考え方"]
 summary = "ノウハウの共有や多様な視点の提供といった切り口から、データ・ビジュアライゼーションと Data Visualization Japan というコミュニティの意味を語った、第1回ミートアップのライトニングトーク。"
+image = "cover.jpg"
 +++
 
 Data Visualization Japan meetup #1（2014年9月16日開催）における、矢崎 裕一（Data Visualization Japan／visualizing.jp）のライトニングトークです。

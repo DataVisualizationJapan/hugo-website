@@ -21,7 +21,7 @@ doorkeeper = "https://data-visualization-japan.doorkeeper.jp/events/14892"
 
 [[sessions]]
   title = "日経新聞でのデータ可視化について（仮）"
-  speaker = "財満 大介（日本経済新聞）"
+  speaker = "財満 大介・澤 紀彦（日本経済新聞）"
   post = "nikkei-dataviz-2014"
   abstract = "データの可視化についての考えと最新実例の技術的な説明をします。"
 

@@ -11,6 +11,7 @@ event = "2014-meetup"
 categories = ["meetup"]
 tags = ["Plotly"]
 summary = "データ可視化ツールであり、データ・グラフの共有ツールでもある Plotly を紹介。グラフを再現するコードの自動生成機能がもつ社会的・ビジネス的な意味を論じたライトニングトーク。"
+image = "cover.jpg"
 +++
 
 Data Visualization Japan meetup #1（2014年9月16日開催）における、五十嵐 康伸さん（研究者）のライトニングトークです。

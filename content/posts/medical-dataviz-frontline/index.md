@@ -11,6 +11,7 @@ event = "2014-meetup"
 categories = ["meetup"]
 tags = ["医療"]
 summary = "患者の行動データに位置・時間の情報を重ね、病気を生み出す環境そのものを解消しようとするアメリカの取り組みなど、医療分野でのデータ可視化の最前線を紹介したライトニングトーク。"
+image = "cover.jpg"
 +++
 
 Data Visualization Japan meetup #1（2014年9月16日開催）における、市川 衛さん（テレビ局ディレクター）のライトニングトークです。
