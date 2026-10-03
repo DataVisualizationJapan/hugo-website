@@ -36,6 +36,7 @@
             <h2 class="section-title">当日の様子</h2>
             <div class="dvj-photos__grid">
                 {{ range $i, $p := . }}
+                    {{- $p = $p.Filter images.AutoOrient -}}
                     {{- $full := $p.Fit "1600x1600" -}}
                     {{- $thumb := $p.Fill "600x400 Center" -}}
                     <a class="dvj-photos__item" href="{{ $full.RelPermalink }}" data-w="{{ $full.Width }}" data-h="{{ $full.Height }}">
