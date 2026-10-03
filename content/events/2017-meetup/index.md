@@ -6,6 +6,7 @@ aliases = ["/categories/2017/"]
 format = "会場"
 venue = "Indeed Tokyo 目黒オフィス"
 connpass = "https://data-visualization-japan.connpass.com/event/74681/"
+peatix = "https://peatix.com/event/333979"
 
 [[sessions]]
   title = "地球を作り上げる：世界天気のアニメーション地図"
@@ -40,4 +41,4 @@ connpass = "https://data-visualization-japan.connpass.com/event/74681/"
   abstract = "Visualizing.JP/Data Visualization Japanは、今年で七年目になる「世界のデータジャーナリズムの分野における優れた活動を認めた最初の国際賞」である [Data Journalism Awards](https://www.datajournalismawards.org/) のメディアパートナーとなりました。Data Journalism Awardsの取り組みや、過去のデータ可視化部門の受賞作をご紹介します。"
 +++
 
-2017年12月26日に Indeed Tokyo 目黒オフィスで開催したイベントです。ミニ・カンファレンス形式で行い、connpass では78名が参加登録しました。当日の講演の一部を、書き起こし記事として公開しています。
+2017年12月26日に Indeed Tokyo 目黒オフィスで開催したイベントです。ミニ・カンファレンス形式で行い、connpass では78名、Peatix では26名が参加登録しました。当日の講演の一部を、書き起こし記事として公開しています。
