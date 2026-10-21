@@ -11,6 +11,7 @@ event = "2015-meetup"
 categories = ["meetup"]
 tags = ["報道", "放送", "NHK"]
 summary = "20数年テレビの世界にいた記者の目から、データビジュアライゼーションとウェブでの新しい表現の可能性、そして課題について語った講演。"
+image = "cover.jpg"
 +++
 
 Data Visualization Japan meetup #3（2015年12月25日開催）における、山本 智さん（日本放送協会）の講演です。

@@ -11,6 +11,7 @@ event = "2015-meetup"
 categories = ["meetup"]
 tags = ["グラフィックレコーディング", "対話"]
 summary = "議論を可視化するグラフィックレコーディングを、課題解決のための手法として紹介した講演。"
+image = "cover.jpg"
 +++
 
 Data Visualization Japan meetup #3（2015年12月25日開催）における、清水 淳子さん（TokyoGraphicRecorder）の講演です。
