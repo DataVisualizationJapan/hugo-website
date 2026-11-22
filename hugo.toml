@@ -118,6 +118,15 @@ theme = 'stack'
       icon = 'tag'
 
   [[menu.main]]
+    identifier = 'sigma-awards'
+    name = 'Sigma Awards'
+    url = '/sigma-awards/'
+    weight = 55
+
+    [menu.main.params]
+      icon = 'award'
+
+  [[menu.main]]
     identifier = 'about'
     name = 'About'
     url = '/about/'
