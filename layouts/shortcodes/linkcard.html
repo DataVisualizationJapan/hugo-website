@@ -1,0 +1,11 @@
+{{- /*
+    外部サイトへのリンクカード（トップページの .dvj-sigma と同じ見た目）。
+    {{< linkcard url="https://..." title="..." lead="..." label="一覧を見る" >}}
+*/ -}}
+<a class="dvj-sigma dvj-linkcard" href="{{ .Get "url" }}" target="_blank" rel="noopener">
+    <span class="dvj-sigma__text">
+        <span class="dvj-sigma__title">{{ .Get "title" }}</span>
+        {{ with .Get "lead" }}<span class="dvj-sigma__lead">{{ . }}</span>{{ end }}
+    </span>
+    <span class="dvj-sigma__go">{{ .Get "label" | default "開く" }}<span class="dvj-sr">（新しいタブで開きます）</span></span>
+</a>
