@@ -1012,3 +1012,9 @@ button.dvj-timeline__year:not(:disabled):hover,
   .dvj-session { flex-direction: column; }
   .dvj-session__thumb { flex-basis: auto; max-width: 100%; }
 }
+
+/* 本文中のリンクカード（layouts/shortcodes/linkcard.html） */
+.article-content .dvj-linkcard {
+  margin: 16px 0;
+  box-shadow: inset 3px 0 0 var(--dvj-brand), var(--shadow-l2);
+}
