@@ -1,0 +1,4 @@
+{{- if and hugo.IsProduction (not hugo.IsServer) site.Data.analytics.enabled -}}
+<script id="dvj-analytics-config" type="application/json">{{ site.Data.analytics | jsonify | safeJS }}</script>
+<script src="{{ "js/dvj-analytics.js" | relURL }}" defer></script>
+{{- end -}}

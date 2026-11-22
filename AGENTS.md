@@ -40,3 +40,8 @@
   - 同ファイル末尾で RSS フィードの autodiscovery `<link rel="alternate">` も出力。
 - 登壇者タクソノミー：`hugo.toml` の `[taxonomies]` に `speaker = "speakers"` を追加（category / tag も併記が必要）。記事 front matter は `speakers = [...]`。`/speakers/` と `/speakers/<名前>/` はテーマ標準のタクソノミーテンプレートで自動生成。メニューに `speakers`（weight 45, icon `user`）。
   - 方針：`tags` は「トピック」、`speakers` は「登壇者」。人名は tags ではなく speakers に入れる（既存2記事は移行済み）。
+
+
+## アクセス解析
+
+計測の変更・サイト追加時は `docs/analytics.md` を読み、仕様バージョンを合わせること。生成HTMLへの直接追記、測定IDの分散記述、検索語の送信は行わない。公開前にGA側の前提設定と検証を完了すること。
