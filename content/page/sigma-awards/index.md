@@ -3,6 +3,7 @@ title = 'The Sigma Awards'
 description = '世界のデータジャーナリズムを対象とした国際アワード「The Sigma Awards」の紹介と、Data Visualization Japan が公開している関連コンテンツ。'
 layout = 'single'
 url = '/sigma-awards/'
+image = 'cover.jpg'   # The Sigma Awards 2026 のキービジュアル
 +++
 
 **The Sigma Awards** は、世界中の優れたデータジャーナリズムを称える国際アワードです。Data Visualization Japan はメディアパートナーとして協力しています。
