@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "measurement_id": "G-0DP20HK462",
+  "site_id": "main",
+  "production_hosts": [
+    "data-visualization.jp"
+  ]
+}
